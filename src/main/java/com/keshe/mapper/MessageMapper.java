@@ -21,6 +21,10 @@ public interface MessageMapper {
     @Select("select message_id from message where user_id=#{userId} and message_info=#{messageInfo}")
     String getMessageId(String userId, String messageInfo);
 
+    //根据messageId查询message
+    @Select("select * from message where message_id=#{messageId}")
+    Message messageByMessageId(String messageId);
+
     //个人信息页面的个人动态分页显示
     @Select("select * from message where user_id = #{userId} and message_state=${1}  ORDER BY message_ctime DESC")
     List<Message> messageByUserId(String userId);
@@ -56,6 +60,12 @@ public interface MessageMapper {
     //根据messageId减少message_agreenum字段
     @Update("update message set message_agreenum=message_agreenum-1 where message_id=#{messageId}")
     Integer redAgreenum(String messageId);
+
+    //根据messageId增加message_readnum字段
+    @Update("update message set message_readnum=message_readnum+1 where message_id=#{messageId}")
+    Integer addReadnum(String messageId);
+
+
 
     /**
      * 转发让转发数加一

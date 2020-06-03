@@ -52,6 +52,24 @@ public interface MessageService {
      */
     RetJsonData saveMessageOnVideo(MultipartFile file, String userId, String messageInfo, String lable) throws Exception;
 
+
+    /**
+     * 根据messageId查询message所有信息
+     * @param messageId
+     * @return
+     */
+    RetJsonData getMessage(String messageId);
+
+
+    /**
+     * 增加浏览量
+     * @param messageId
+     * @return
+     */
+    RetJsonData addMessageReadNum(String messageId);
+
+
+
     Integer forWardUpdateTranspondnum(Forward forward);
 
     Message findMessageById(String messageId);

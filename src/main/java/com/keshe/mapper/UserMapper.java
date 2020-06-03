@@ -59,4 +59,13 @@ public interface UserMapper {
     //取关减少粉丝数
     @Update("update user set user_fans = user_fans-1 where user_id=#{userId}")
     Integer redUserFans(String userId);
+
+
+    //关注增加说说数
+    @Update("update user set user_msgcount = user_msgcount+1 where user_id=#{userId}")
+    Integer icrUserMsgCount(String userId);
+
+    //取关减少说说数
+    @Update("update user set user_msgcount = user_msgcount-1 where user_id=#{userId}")
+    Integer redUserMsgCount(String userId);
 }

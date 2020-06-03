@@ -17,11 +17,9 @@ function page(page) {
             console.log(result.data);
             if (result.success) {
                 document.getElementById("headp").src = result.data.user.userImg;
-                // $("#headp").attr("src",result.data.user.userImg);//这里改大头像
                 $("#nickname").text(result.data.user.userName);//这里改用户名
                 $("#we-num").text(result.data.user.userMsgcount);//这里改说说数量
                 $("#fans-num").text(result.data.user.userFans);//这里改粉丝数量
-                pagenums = result.data.messageNums;//这里改页数
                 let parentdiv = document.getElementsByClassName("blogs")[0];
                 if (result.data.messages.length > 0) {
                     for (let i = 0; i < result.data.messages.length; i++) {
@@ -65,22 +63,26 @@ function page(page) {
                             "                                    <a href = \"javascript:;\" class=\"praise\">点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
                             "                                </div>\n" +
                             "                            </div>";
+
+                        parentdiv.appendChild(article);
                         if (result.data.messages[i].imgs.length != 0) {
-                            let blogimgvideo = $("#blog-img-video");
+                            let blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                             for (let j = 0; j < result.data.messages[i].imgs.length; j++) {
                                 let images = document.createElement("img");
-                                images.id = result.data.messages[i].imgs[j].imgUrl;
-                                blogimgvideo.appendChild(images);
+                                images.id = result.data.messages[i].imgs[j].imgId;
+                                images.className="artimg";
+                                images.src=result.data.messages[i].imgs[j].imgUrl;
+                                blogimgvideos.appendChild(images);
                             }
                         }
                         if (result.data.messages[i].video != null) {
-                            let blogimgvideo = $("#blog-img-video");
+                            let blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                             let videos = document.createElement("video");
                             videos.id = result.data.messages[i].video.videoId;
                             videos.src = result.data.messages[i].video.videoUrl;
-                            blogimgvideo.appendChild(videos);
+                            blogimgvideos.appendChild(videos);
+                            videos.setAttribute("controls","true");
                         }
-                        parentdiv.appendChild(article);
                     }
                 } else {
                     alert("快去发表你的第一条动态吧");
