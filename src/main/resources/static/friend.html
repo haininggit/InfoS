@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>好友主页</title>
+    <link rel="stylesheet" href="css/person.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="images/logo.png">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/friend.js"></script>
+
+</head>
+<body>
+
+<nav class="mainNav" style="z-index: 9">
+    <div class="logo">
+
+    </div>
+    <div class="functions">
+        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="">
+        <ul>
+            <li><a href="person02.html">我要写走测试</a></li>
+            <li><a href="home.html">首页</a></li>
+            <li><a href="video.html">视频</a></li>
+            <li><a href="mynote.html">关注</a></li>
+            <li><a href="chatroom.html">聊天</a></li>
+        </ul>
+    </div>
+    <div class="setting">
+        <ul>
+            <li class="setting-message">
+                <!-- 下拉小三角 -->
+                消息<p id="notices">9</p>
+                <div class="setting-wrapper">
+                    <!-- <div class="triangle"></div> -->
+                    <ul class="drop-down-message">
+                        <li><a href="javascript:;">@我的</a></li>
+                        <li><a href="javascript:;">评论</a></li>
+                        <li><a href="javascript:;">赞</a></li>
+                        <li><a href="javascript:;">私信</a></li>
+                        <li><a href="javascript:;">未关注人私信</a></li>
+                        <li><a href="javascript:;">群通知</a></li>
+                        <li class="last-mes"><a href="javascript:;">消息设置</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="message-setting">
+                设置
+                <div class="message-wrapper">
+                    <ul class="drop-down-setting">
+                        <li><a href="javascript:;">账号设置</a></li>
+                        <li><a href="javascript:;">会员中心</a></li>
+                        <li><a href="javascript:;">V认证</a></li>
+                        <li><a href="javascript:;">账号安全</a></li>
+                        <li><a href="javascript:;">隐私设置</a></li>
+                        <li><a href="javascript:;">屏蔽设置</a></li>
+                        <li><a href="javascript:;">消息设置</a></li>
+                        <li><a href="javascript:;">帮助中心</a></li>
+                        <li><a href="javascript:;" class="out">退出</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>其他</li>
+        </ul>
+    </div>
+</nav>
+
+<div class="top">
+    <div class="head-top"></div>
+    <div class="headpicture" id="modifyinfomation"></div>
+    <div class="head-bottom">
+        <div class="username" id="username">username</div>
+        <div class="Personalized" id="Personalized"><h2>不羡仙很懒，什么也没有写</h2></div>
+    </div>
+</div>
+<nav class="middle">
+    <ul>
+        <li style="float: left;width: 50%; "><h3><a href="">好友主页</a></h3></li>
+        <li style="float: right;width: 50%; "><h3><a href="">他的关注</a></h3></li>
+    </ul>
+
+</nav>
+<img src="icon/beforepage.png" class="left page" onclick="beforepage()">
+<img src="icon/afterpage.png" class="right page" onclick="nextpage()">
+<div class="bottom">
+    <div class="bottom-left">
+        <div class="left-top">
+            <ul>
+                <li style="float: left;width: 50%; "><h3>说说数量</h3></li>
+                <li style="float: left;width: 50%; "><h3>粉丝数量</h3></li>
+                <li style="float: right;width: 50%; " id="Msgcount">50</li>
+                <li style="float: right;width: 50%; " id="fanscount">20</li>
+
+            </ul>
+        </div>
+        <div class="pictures">
+            <h3><p style="text-align: center">相册</p></h3>
+            <img src="images/preview.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="articles">
+
+        <div class="bottom-right">
+            <div class="bottom-top">
+                <div class="headp"></div>
+                <div class="info">
+                    <a class="username">username</a><br>
+                    <a class="time">今天来自weibo.com</a><br>
+                </div>
+                <div class="article">
+                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
+                    <p class="readall" onclick="read(this)"></p>
+                </div>
+                <img src="" alt="">
+            </div>
+            <div class="bottom-middle link-top"></div>
+            <div class="bottom-bottom">
+                <ul>
+                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
+                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
+                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
+                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
+                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-right">
+            <div class="bottom-top">
+                <div class="headp"></div>
+                <div class="info">
+                    <a class="username">username</a><br>
+                    <a class="time">今天来自weibo.com</a><br>
+                </div>
+                <div class="article">
+                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
+                    <p class="readall" onclick="read(this)"></p>
+                </div>
+                <img src="images/preview.jpg" alt="">
+            </div>
+            <div class="bottom-middle link-top"></div>
+            <div class="bottom-bottom">
+                <ul>
+                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
+                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
+                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
+                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
+                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-right">
+            <div class="bottom-top">
+                <div class="headp"></div>
+                <div class="info">
+                    <a class="username">username</a><br>
+                    <a class="time">今天来自weibo.com</a><br>
+                </div>
+                <div class="article">
+                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
+                    <p class="readall" onclick="read(this)"></p>
+                </div>
+                <img src="images/preview.jpg" alt="">
+            </div>
+            <div class="bottom-middle link-top"></div>
+            <div class="bottom-bottom">
+                <ul>
+                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
+                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
+                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
+                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
+                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
