@@ -141,5 +141,22 @@ public class MessageServiceImpl implements MessageService {
             return new RetJsonData(true, "动态存储失败");
     }
 
+    /**
+     * 更新转发后message的转发数
+     * @param forward
+     * @return
+     */
+    public Integer forWardUpdateTranspondnum(Forward forward) {
+        return messageMapper.forWardUpdateTranspondnum(forward);
+    }
 
+    @Override
+    public Message findMessageById(String messageId) {
+        return messageMapper.findMessageById(messageId);
+    }
+
+    @Override
+    public Integer saveMessage(Message message) {
+       return messageMapper.saveMessage(message);
+    }
 }

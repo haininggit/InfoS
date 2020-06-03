@@ -1,5 +1,6 @@
 package com.keshe.service;
 
+import com.keshe.entity.Forward;
 import com.keshe.entity.Message;
 import com.keshe.entity.RetJsonData;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,4 +51,10 @@ public interface MessageService {
      * @return
      */
     RetJsonData saveMessageOnVideo(MultipartFile file, String userId, String messageInfo, String lable) throws Exception;
+
+    Integer forWardUpdateTranspondnum(Forward forward);
+
+    Message findMessageById(String messageId);
+
+    Integer saveMessage(Message message);
 }

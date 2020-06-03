@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
- *
+ *开启websocket支持
+ * author：Tcp
  */
 @Component
 @Configuration

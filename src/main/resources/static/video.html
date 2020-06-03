@@ -9,25 +9,28 @@
 <script src="js/jquery.min.js"></script>
 <body>
 
-<nav class="mainNav">
+<nav class="mainNav" style="z-index: 9">
     <div class="logo">
 
     </div>
     <div class="functions">
-        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="">
+        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="" onclick="search()">
         <ul>
-            <li><a href="">我要写走测试</a></li>
+            <li><a href="person02.html">我要写走测试</a></li>
             <li><a href="home.html">首页</a></li>
             <li><a href="video.html">视频</a></li>
-            <li><a href="">发现</a></li>
-            <li><a href="">游戏</a></li>
+            <li><a href="mynote.html">关注</a></li>
+            <li><a href="chatroom.html" onclick="function f() {
+                document.getElementById('notices').innerText=0;
+              document.getElementById('notices').style.display='none';
+            }">聊天</a></li>
         </ul>
     </div>
     <div class="setting">
         <ul>
             <li class="setting-message">
                 <!-- 下拉小三角 -->
-                消息
+                消息<p id="notices" style="display: none">0</p>
                 <div class="setting-wrapper">
                     <!-- <div class="triangle"></div> -->
                     <ul class="drop-down-message">
@@ -95,15 +98,14 @@
 
         </div>
 
-
         <div class="allVideos">
             <span>编辑精选</span>
-            <!--            <div class="littlev" id="123">-->
-            <!--                <video src="videos/douyin.mp4" width="208" height="116" controls type="video/mp4">-->
-            <!--                </video>-->
-            <!--                <div class="p">黄骨鱼焖豆腐，从洗到腌制，掌握关键步骤，鱼肉鲜嫩，酸辣</div>-->
-            <!--            </div>-->
-            <!--            -->
+            <!--                        <div class="littlev" id="123">-->
+            <!--                            <video src="http://qb5b2c5x3.bkt.clouddn.com/176f6784-6ac6-4558-a8cc-712ccd0a5148-.mp4" width="208" height="116" controls type="video/mp4">-->
+            <!--                            </video>-->
+            <!--                            <div class="p">黄骨鱼焖豆腐，从洗到腌制，掌握关键步骤，鱼肉鲜嫩，酸辣</div>-->
+            <!--                        </div>-->
+
 
         </div>
     </div>
@@ -115,15 +117,22 @@
     let comId = $.cookie("userId");
     let socket = null;
     onload = function () {
+
+
         // 初始化websocket
         socket = new WebSocket("ws:localhost:80//websocket/" + comId);
         socket.onopen = function () {
             console.log("hkjllllllllllllllllllll");
         }
         socket.onmessage = function (data) {
+            var mesnum=document.getElementById('notices').innerText;
+            mesnum=parseInt(mesnum)+1;
+            document.getElementById('notices').innerText=mesnum;
+            document.getElementById('notices').style.display='block'
             console.log("data:" + data);
             var record = JSON.parse(data.data);
-            alert("你收到了来自" + record.comUserId + "的消息");
+
+            console.log("你收到了来自" + record.comUserId + "的消息");
         }
         dealvideos("美食")
 
@@ -177,7 +186,6 @@
                             "                <div class=\"p\">" + videos[i].messageInfo + "</div>\n" +
                             "            </div>"
 
-
                         var allvideos = document.getElementsByClassName("allVideos")[0];
                         if (i == 1) {
                             allvideos.innerHTML = "";
@@ -192,6 +200,11 @@
     function showThisTypeVideos(obj) {
         var type = obj.innerText;
         dealvideos(type);
+    }
+
+    function search() {
+        var key=document.getElementsByClassName("search")[0].innerText;
+
     }
 
 </script>

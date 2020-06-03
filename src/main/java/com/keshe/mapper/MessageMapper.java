@@ -1,5 +1,6 @@
 package com.keshe.mapper;
 
+import com.keshe.entity.Forward;
 import com.keshe.entity.Message;
 import org.apache.ibatis.annotations.*;
 
@@ -55,6 +56,18 @@ public interface MessageMapper {
     //根据messageId减少message_agreenum字段
     @Update("update message set message_agreenum=message_agreenum-1 where message_id=#{messageId}")
     Integer redAgreenum(String messageId);
+
+    /**
+     * 转发让转发数加一
+     * @param forward
+     * @return
+     */
+    @Update({"update message set message_transpondnum=message_transpondNum+1 where message_id=#{messageId},"})
+    Integer forWardUpdateTranspondnum(Forward forward);
+
+
+    @Select("select * from message where messageId=#{messageId}")
+    Message findMessageById(String messageId);
 
 
 }

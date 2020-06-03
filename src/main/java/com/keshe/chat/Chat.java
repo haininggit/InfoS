@@ -9,6 +9,10 @@ import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * chatController
+ * author:tcp
+ */
 @RequestMapping("/chat")
 @RestController
 public class Chat {
