@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 动态详情 </title>
+    <link rel="stylesheet" href="css/particulars.css" type="text/css">
+</head>
+<body>
+<!--导航条-->
+<nav class="mainNav">
+    <div class="logo">
+
+    </div>
+    <div class="functions">
+        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="">
+        <ul>
+            <li><a href="">我要写走测试</a></li>
+            <li><a href="">首页</a></li>
+            <li><a href="">视频</a></li>
+            <li><a href="">发现</a></li>
+            <li><a href="">游戏</a></li>
+        </ul>
+    </div>
+    <div class="setting">
+        <ul>
+            <li class="setting-message">
+                <!-- 下拉小三角 -->
+                消息
+                <div class="setting-wrapper">
+                    <!-- <div class="triangle"></div> -->
+                    <ul class="drop-down-message">
+                        <li><a href="javascript:;">@我的</a></li>
+                        <li><a href="javascript:;">评论</a></li>
+                        <li><a href="javascript:;">赞</a></li>
+                        <li><a href="javascript:;">私信</a></li>
+                        <li><a href="javascript:;">未关注人私信</a></li>
+                        <li><a href="javascript:;">群通知</a></li>
+                        <li class="last-mes"><a href="javascript:;">消息设置</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="message-setting">
+                设置
+                <div class="message-wrapper">
+                    <ul class="drop-down-setting">
+                        <li><a href="javascript:;">账号设置</a></li>
+                        <li><a href="javascript:;">会员中心</a></li>
+                        <li><a href="javascript:;">V认证</a></li>
+                        <li><a href="javascript:;">账号安全</a></li>
+                        <li><a href="javascript:;">隐私设置</a></li>
+                        <li><a href="javascript:;">屏蔽设置</a></li>
+                        <li><a href="javascript:;">消息设置</a></li>
+                        <li><a href="javascript:;">帮助中心</a></li>
+                        <li><a href="javascript:;" class="out">退出</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>其他</li>
+        </ul>
+    </div>
+</nav>
+<!--内容大框架-->
+<div class="content">
+
+    <div class="main">
+        <!--动态部分 左-->
+        <div class="thing" id="thing">
+
+            <!--            <div class="message">-->
+            <!--                <div class="head">-->
+            <!--                    <img src="images/head.png" class="round_icon">-->
+            <!--                </div>-->
+            <!--                <div class="msg">-->
+            <!--                    <div class="name">-->
+            <!--                        <a id="but1">昵称 V</a>-->
+            <!--                        <a id="but2">➕关注</a>-->
+            <!--                    </div>-->
+            <!--                    <div class="sub">-->
+            <!--                            hello,word-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+            <div class="butt">
+
+                <li><a href="#">收藏</a></li>
+                <li><a href="#">转发</a></li>
+                <li><a href="#">评论</a></li><!--onclick="f()"-->
+                <li><a href="#">点赞</a></li>
+            </div>
+
+            <!--评论部分-->
+
+            <div id="com">
+                <ul id="pn">
+                    <li class="list0">
+
+                        <div class="content">
+                            <div class="comment-list" id="comment-list">
+                                <!--                                                                <div class="comment" user="self">-->
+                                <!--                                                                    <div class="comment-right">-->
+                                <!--                                                                        <div class="comment-text"><span class="user">老王：</span>我住隔壁我姓王</div>-->
+                                <!--                                                                        <div class="comment-date">-->
+                                <!--                                                                            <br>-->
+                                <!--                                                                            02-14 22:00-->
+                                <!--                                                                            <a class="comment-zan" href="javascript:;" total="23" my="1">23 取消赞</a>-->
+                                <!--                                                                            <a class="comment-dele" href="javascript:;">回复</a>-->
+                                <!--                                                                        </div>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+
+                                <!--                                                                <div class="comment" user="self">-->
+                                <!--                                                                    <div class="comment-right">-->
+                                <!--                                                                        <div class="comment-text"><span class="user">我：</span>看哭了留卡号吧</div>-->
+                                <!--                                                                        <div class="comment-date">-->
+                                <!--                                                                            <br>-->
+                                <!--                                                                            02-14 24:00-->
+                                <!--                                                                            <a class="comment-zan" href="javascript:;" total="0" my="0">赞</a>-->
+                                <!--                                                                            <a class="comment-dele" href="javascript:;">删除</a>-->
+                                <!--                                                                        </div>-->
+                                <!--                                                                    </div>-->
+                                <!--                                                                </div>-->
+                            </div>
+                            <div class="hf">
+                                <textarea type="text" id="text" class="hf-text" autocomplete="off" maxlength="100"
+                                          placeholder="评论..." name="root">
+                                </textarea>
+                                <button class="hf-btn" onclick="send(this)">评论</button>
+                                <span class="hf-nub">0/100</span>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+        <!--该博主信息  右-->
+        <div class="self">
+            <a id="but3" href="#">Infos 认证 </a>
+            <p style="font-size: 15px">昵称 </p>
+            <br/>
+            <p>🚪 行业类别 优秀博主 编辑 </p>
+            <p>👉 简介： 好好学习 不熬夜</p>
+            <br/>
+            <a style="text-align: center; cursor: pointer;" href="#"> 更多 ＞</a>
+        </div>
+    </div>
+
+    <!--底部-->
+    <div class="foot">
+        <p>Infos 客服 客服热线 8888-8888</p>
+
+        <p>意见反馈 开放平台 商务合作</p>
+        <p>Copyright@2020-2020 Infos 开发小组</p>
+    </div>
+</div>
+<script src="js/jquery1111.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+    /**
+     * 平论功能；
+     *
+     */
+    var comment_replyId;
+    var comment_user;
+    var messageId = $.cookie("messageId")
+    var userName = $.cookie("userName");
+    onload = function () {
+        $.ajax({
+            url: "message/getMessageById",
+            type: "POST",
+            data: {messageId: messageId},
+            success: function (data) {
+                var user = data.user;
+                var message = data.message;
+                var commens = data.comments;
+
+                var message = "   <div class=\"message\">\n" +
+                    "                <div class=\"head\" id='" + user.userId + "'>\n" +
+                    "                    <img src='" + user.userImg + "' class=\"round_icon\">\n" +
+                    "                </div>\n" +
+                    "                <div class=\"msg\">\n" +
+                    "                    <div class=\"name\">\n" +
+                    "                        <a id=\"but1\">" + user.userName + "</a>\n" +
+                    "                        <a id=\"but2\" onclick='guanzhu(" + user.userId + ")'>➕ 关注</a>\n" +
+                    "                    </div>\n" +
+                    "                    <div class=\"sub\">\n" + message.messageInfo +
+
+                    "                    </div>\n" +
+                    "                    \n" +
+                    "                </div>\n" +
+                    "            </div>"
+
+                $("#thing").appendChild(message);
+
+                for (var i = 0; i < commens.length; i++) {
+                    var comment = "    <div class=\"comment\" user=\"self\">\n" +
+                        "                                    <div class=\"comment-right\" id='" + commens[i].comment.commentId + "'>\n" +
+                        "                                        <div class=\"comment-text\"><span class=\"user\">" + commens[i].comment.userName + "：</span>" + commens[i].comment.commentInfo + "</div>\n" +
+                        "                                        <div class=\"comment-date\">\n" +
+                        "                                            <br>\n" +
+                        "                                           " + commens[i].comment.commentTime + "\n" +
+                        "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>"
+
+                    $("#comment-list").appendChild(comment);
+
+                }
+
+            }
+        })
+    }
+
+    function send(obj) {
+
+        var textinput = obj.parentNode.children[0];
+        var userId = $.cookie("userId");
+        var commentInfo = textinput.value;
+        var sendType = textinput.getAttributeNode("name")
+        if (sendType == "root") {
+            $.ajax({
+                url: "comment/save",
+                type: "post",
+                data: {
+                    userId: userId,
+                    messageId: messageId,
+                    commentInfo: commentInfo
+                },
+                dataType: "JSON",
+                success: function (data) {
+                    /**
+                     * data:{
+                     *     userName,commentId,commentTime
+                     * }
+                     * @type {string}
+                     */
+                    var comment = "<div class=\"comment\" user=\"self\">\n" +
+                        "                                    <div class=\"comment-right\" id='" + data.data.commentId + "'>\n" +
+                        "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + "：</span>" + data.data.commentInfo + "</div>\n" +
+                        "                                        <div class=\"comment-date\">\n" +
+                        "                                            <br>\n" +
+                        "                                           " + data.data.commentTime + "\n" +
+                        "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>"
+                    $("#comment-list").appendChild(comment);
+
+                }
+
+            })
+        } else if (sendType == "son") {
+            var replyInfo = $("#text").val();
+            $.ajax({
+                url: "reply/saveReply",
+                type: "POST",
+                data: {
+                    replyUserId: userId,
+                    commentId: comment_replyId,
+                    replyInfo: replyInfo,
+                },
+                success: function (data) {
+                    var reply = data.data.reply;
+                    var comment = "<div class=\"comment\" user=\"self\">\n" +
+                        "                                    <div class=\"comment-right\" id='" + reply.replyId + "'>\n" +
+                        "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + ":@回复" + comment_user + "</span>" + ':' + replyInfo + "</div>\n" +
+                        "                                        <div class=\"comment-date\">\n" +
+                        "                                            <br>\n" +
+                        "                                           " + reply.replyTime + "\n" +
+                        "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>";
+
+
+                    /**
+                     * 将生成的comment追加到 document.getElementById(comment_replyId)之后
+                     */
+                    $(comment).insertAfter($(document.getElementById(comment_replyId)));
+                    document.getElementById("text").setAttribute("name", "root");
+                    document.getElementById("text").innerText = "";
+
+
+                }
+            })
+
+        }
+    }
+
+    function reply(obj) {
+
+
+        comment_replyId = obj.parentNode.parentNode.id;
+        comment_user = obj.parentNode.parentNode.children[0].children[0].innerText;
+        comment_user = comment_user.substr(0, comment_user.indexOf(":"))
+
+        $.ajax({
+            url: "getReplysById",
+            data: {replyId: comment_replyId},
+            type: "POST",
+            success: function (data) {
+                var reples = data.data;
+
+                // for (var i = 0; i < reples.length; i++) {
+                //     var reply = reples[i];
+                //
+                //     var comment = "<div class=\"comment\" user=\"self\">\n" +
+                //         "                                    <div class=\"comment-right\" id='" + reply.replyId + "'>\n" +
+                //         "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + ":@回复" + comment_user + "</span>" + ':' + replyInfo + "</div>\n" +
+                //         "                                        <div class=\"comment-date\">\n" +
+                //         "                                            <br>\n" +
+                //         "                                           " + reply.replyTime + "\n" +
+                //         "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
+                //         "                                        </div>\n" +
+                //         "                                    </div>\n" +
+                //         "                                </div>";
+                //
+                //
+                //     /**
+                //      * 将生成的comment追加到 document.getElementById(comment_replyId)之后
+                //      */
+                //     $(comment).insertAfter($(document.getElementById(comment_replyId)));
+                }
+            }
+
+        })
+
+
+        var text = document.getElementById("text");
+        text.setAttribute("name", "son");
+        text.focus();
+
+    }
+
+    function guanzhu(userId) {
+
+    }
+
+</script>
+
+</body>
+</html>
