@@ -26,7 +26,7 @@ public class LableController {
      *               errorMsg:NULL
      *               data:List<lable>
      *  失败：返回   success:false
-     *               errorMsg:删除失败/该动态不存在
+     *               errorMsg:查询失败/该动态不存在
      *               data:null
      * @return
      */

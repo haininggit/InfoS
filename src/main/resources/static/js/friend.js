@@ -97,8 +97,44 @@ function page(page) {
 function readArticle(obj) {
     let articleId = obj.parentNode.parentNode.parentNode.id;
     $.cookie("messageId", articleId);
-    window.location.href = ""//改这里
+    window.location.href = "";//改这里
 }
 
-
-
+var follows=true;
+$("#modify").click(function () {
+    if(follows) {
+        follows=false;
+        let lable = prompt("请输入关注好友的类型(必填)");
+        if(lable == null || lable == ""){
+        $.ajax({
+            type: "POST",
+            url: "relation/delRelation",
+            data: {
+                userId: userId,
+                userById: friendId,
+                lable:lable
+            },
+            success: function (result) {
+                if (result.success)
+                $("#modify").text("关注")
+            }
+        })
+        }else {
+            alert("未填写关注类型，关注失败")
+        }
+        }else {
+        follows=true;
+        $.ajax({
+            type: "POST",
+            url: "relation/addRelation",
+            data: {
+                userId: userId,
+                userById: friendId
+            },
+            success: function (result) {
+                if (result.success)
+                $("#modify").text("取消关注")
+            }
+    })
+    }
+})

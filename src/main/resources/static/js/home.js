@@ -1,7 +1,8 @@
-
 var imgFile = []; //文件流
 var imgSrc = []; //图片路径
 var imgName = []; //图片名字
+var vidorpic = true
+
 $(function(){
     // 鼠标经过显示删除按钮
     $('.content-img-list').on('mouseover','.content-img-list-item',function(){
@@ -25,7 +26,7 @@ $(function(){
     });
     //图片上传
     $('#upload').on('change',function(){
-
+        vidorpic=false;
         if(imgSrc.length>=4){
             return alert("最多只能上传4张图片");
         }
@@ -54,60 +55,72 @@ $(function(){
     })
 
     //提交请求
-    $('#btn-submit-upload').on('click',function(){
+    $('#article-send').on('click',function(){
+        var radios = document.getElementsByName("rideo");
+        var lable = 0;
+        for(var i=0;i<radios.length;i++){
+            if(radios[i].checked == true){
+                lable = radios[i].value;
+            }
+        };
         // FormData上传图片
+        var messageInfo=$("#messageInfo").val();
         var formFile = new FormData();
-        // formFile.append("type", type);
-        // formFile.append("content", content);
-        // formFile.append("mobile", mobile);
+        let userId = $.cookie("userId");
         // 遍历图片imgFile添加到formFile里面
-        $.each(imgFile, function(i, file){
-            formFile.append('myFile[]', file);
-        });
-        console.log(imgFile)
-        //    $.ajax({
-        //        url: 'http://zhangykwww.yind123.com/webapi/feedback',
-        //        type: 'POST',
-        //        data: formFile,
-        //        async: true,
-        //        cache: false,
-        //        contentType: false,
-        //        processData: false,
-        //        // traditional:true,
-        //        dataType:'json',
-        //        success: function(res) {
-        //            console.log(res);
-        //            if(res.code==0){
-        //                alert("您的意见反馈已提交，感谢您的宝贵意见")
-        //    //             $("#adviceContent").val("");
-        // 			// $("#contact").val("");
-        //            }else{
-        //                alert(res.message);
-        //                $('.content-img .file').show();
-        //                $("#adviceContent").val("");
-        //                $("#cotentLength").text("0/240");
-        // 			$("#contact").val("");
-        // 			imgSrc = [];imgFile = [];imgName = [];
-        // addNewContent(".content-img-list");
+        formFile.append("messageInfo", messageInfo);
+        formFile.append("userId", userId);
+        formFile.append("lable", lable);
+        if(!vidorpic) {
+            $.each(imgFile, function (i, file) {
+                formFile.append("files", file);
+            });
 
-        // $('.success-tips').removeClass('hide');
-        //      	var time = 3;
-        //      	var tipTimer = setInterval(function(){
-        //      		time--;
-        //      		if(time==0){
-        //      			$('.success-tips').addClass('hide');
-        //      			$('.success-tips .timer').text('3s');
-        //      			clearInterval(tipTimer);
-        //      		}else{
-        //      			$('.success-tips .timer').text(time+'s');
-        //      		}
-        //      	},1000);
-        //            }
-        //        }
-        //    })
-    });
+            $.ajax({
+                url: "message/saveMessageOnImg",
+                type: 'POST',
+                data: formFile,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result.success)
+                        history.go(0);
+                    else
+                        alert("result.errMsg");
+                },
+            })
+        }else{
+            var form = new FormData($('#uploadvid')[0]);
+            form.append("messageInfo", messageInfo);
+            form.append("userId", userId);
+            form.append("lable", lable);
+            console.log(form);
+            $.ajax({
+                url: " message/saveMessageOnVideo",
+                type: 'POST',
+                data: form,
+                async: true,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (result) {
+                    if (result.success)
+                        history.go(0);
+                    else{
+                        alert("result.errMsg");
+                        console.log("hhhh");
+                    }
+                },
 
+
+            })
+        }
+    })
 });
+
+
 
 //删除
 function removeImg(obj, index) {
@@ -142,6 +155,41 @@ function getObjectURL(file) {
 
 }
 
+$("#pic").click(function () {
+    document.getElementsByClassName("upload-content-img")[0].style.display="block";
+});
+
+$("#vid").click(function () {
+    document.getElementsByClassName("upload-content-video")[0].style.display="block";
+});
+
+
+$("#article-classify").click(function () {
+    document.getElementsByClassName("seclctlable")[0].style.display="block";
+    $.ajax({
+        type: "POST",
+        url: "lable/getAllLable",
+        success: function (result) {
+            if (result.success){
+                let parentlable = document.getElementsByClassName("seclctlable")[0];
+                for(let i=0;i<result.data.length;i++){
+                    console.log(result.data[i].lableInfo);
+                    console.log(result.data[i].lableId);
+                    let divlable = document.createElement("li");
+                divlable.className="box";
+                divlable.innerHTML="<div class=\"box\">\n" +
+                    "        <input type=\"radio\"  id='"+result.data[i].lableId+"' name=\"radio\"/><label for='"+result.data[i].lableId+"'>"+result.data[i].lableInfo+"</label>\n" +
+                    "    </div>\n" +
+                    "    <div class=\"line\"></div>"
+                     parentlable.appendChild(divlable);
+                }
+
+            }
+        }
+    });
+});
+
+
 
 window.onload = function () {
     let userId = $.cookie("userId");
@@ -160,7 +208,6 @@ window.onload = function () {
                 $("#fans-num").text(result.data.user.userFans);//这里改粉丝数量
                 $("#follow-num").text(result.data.user.followCount);//这里改粉丝数量
                 let parentdiv = document.getElementsByClassName("blogs")[0];
-
                 for (let i = 0; i < result.data.messages.length; i++) {
                     let article = document.createElement("li");
                     article.id = result.data.messages[i].message.messageId;
@@ -180,7 +227,7 @@ window.onload = function () {
                         "                                        <!--设置 删除,下拉列表呈现-->\n" +
                         "                                        <div class=\"appear\">\n" +
                         "                                            <div class=\"blog-setting\">\n" +
-                        "                                                <a href = \"javascript:;\" onclick='deletemessage(this)'>删除</a>\n" +
+                        "                                                <a href = \"javascript:;\">删除</a>\n" +
                         "                                                <a href = \"javascript:;\">置顶</a>\n" +
                         "                                            </div>\n" +
                         "                                        </div>\n" +
@@ -190,7 +237,7 @@ window.onload = function () {
                         "                                <div class=\"blog-content\">\n" +
                         "                                    <p class=\"blog-text\" onclick='readArticle(this)'>\n" + result.data.messages[i].message.messageInfo + "</p>\n" +
                         "                                    <!-- 可能动态中只有文字 -->\n" +
-                        "                                    <div class=\"blog-img-video\">\n" +
+                        "                                    <div class='blog-img-video' >\n" +
                         "                                    </div>\n" +
                         "                                </div>\n" +
                         "                                <!--评论 点赞等-->\n" +
@@ -202,28 +249,38 @@ window.onload = function () {
                         "                                    <a href = \"javascript:;\" class=\"praise\">点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
                         "                                </div>\n" +
                         "                            </div>";
+
+                    parentdiv.appendChild(article);
                     if (result.data.messages[i].imgs.length != 0) {
-                        let blogimgvideo = $("#blog-img-video");
+                        var blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                         for (let j = 0; j < result.data.messages[i].imgs.length; j++) {
                             let images = document.createElement("img");
-                            images.id = result.data.messages[i].imgs[j].imgUrl;
-                            blogimgvideo.appendChild(images);
+                            images.id = result.data.messages[i].imgs[j].imgId;
+                            images.className="artimg";
+                            images.src=result.data.messages[i].imgs[j].imgUrl
+                            blogimgvideos.appendChild(images);
                         }
                     }
                     if (result.data.messages[i].video != null) {
-                        let blogimgvideo = $("#blog-img-video");
+                        let blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                         let videos = document.createElement("video");
                         videos.id = result.data.messages[i].video.videoId;
                         videos.src = result.data.messages[i].video.videoUrl;
-                        blogimgvideo.appendChild(videos);
+                        blogimgvideos.appendChild(videos);
+                        videos.setAttribute("controls","true");
                     }
-                    parentdiv.appendChild(article);
                 }
 
-            } else {
-                alert(result.errorMsg);
             }
         }
     })
 
 };
+
+
+// 点赞
+
+// 转发
+
+// 收藏
+

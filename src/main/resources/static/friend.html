@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <meta charset="UTF-8">
-    <title>好友主页</title>
-    <link rel="stylesheet" href="css/person.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="shortcut icon" href="images/logo.png">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.cookie.js"></script>
-    <script src="js/friend.js"></script>
+    <meta charset = "UTF-8">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/person02.css">
+    <link rel="shortcut icon" href="./images/logo.png">
+    <link rel = "stylesheet" href = "./css/font/css/all.css">
 
 </head>
 <body>
-
 <nav class="mainNav">
     <div class="logo">
 
@@ -65,121 +61,75 @@
         </ul>
     </div>
 </nav>
-
-<div class="top">
-    <div class="head-top"></div>
-    <div class="headpicture" id="modifyinfomation"></div>
-    <div class="head-bottom">
-        <div class="username" id="username">username</div>
-        <div class="Personalized" id="Personalized"><h2>不羡仙很懒，什么也没有写</h2></div>
-    </div>
-</div>
-<nav class="middle">
-    <ul>
-        <li style="float: left;width: 50%; "><h3><a href="">好友主页</a></h3></li>
-        <li style="float: right;width: 50%; "><h3><a href="">他的关注</a></h3></li>
-    </ul>
-
-</nav>
-<img src="icon/beforepage.png" class="left page" onclick="beforepage()">
-<img src="icon/afterpage.png" class="right page" onclick="nextpage()">
-<div class="bottom">
-    <div class="bottom-left">
-        <div class="left-top">
-            <ul>
-                <li style="float: left;width: 50%; "><h3>说说数量</h3></li>
-                <li style="float: left;width: 50%; "><h3>粉丝数量</h3></li>
-                <li style="float: right;width: 50%; " id="Msgcount">50</li>
-                <li style="float: right;width: 50%; " id="fanscount">20</li>
-
-            </ul>
-        </div>
-        <div class="pictures">
-            <h3><p style="text-align: center">相册</p></h3>
-            <img src="images/preview.jpg" alt="">
-        </div>
-    </div>
-
-    <div class="articles">
-
-        <div class="bottom-right">
-            <div class="bottom-top">
-                <div class="headp"></div>
-                <div class="info">
-                    <a class="username">username</a><br>
-                    <a class="time">今天来自weibo.com</a><br>
-                </div>
-                <div class="article">
-                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
-                    <p class="readall" onclick="read(this)"></p>
-                </div>
-                <img src="" alt="">
+<div class="content">
+    <div class="main">
+        <!-- 顶部头像部分 -->
+        <div class="top">
+            <div class="avatar"  id="avatar">
+                <img src = ""  alt = "" id="headp">
             </div>
-            <div class="bottom-middle link-top"></div>
-            <div class="bottom-bottom">
-                <ul>
-                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
-                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
-                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
-                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
-                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
+            <p id="nickname"></p>
+            <div class="mod">
+                <a href = "javascript:;" class="modify">取消关注</a>
+            </div>
+            <!--            <p id="info-change">一句话介绍一下自己吧，让别人更了解你</p>-->
+        </div>
+        <!--        主体导航-->
+        <nav class="middle">
+            <a href = "javascript:;" id="selfpage">他的主页</a>
+            <a href = "javascript:;" id="follow">他的关注</a>
+        </nav>
+
+        <!--        主页内容-->
+        <div class="bottom">
+            <div class="bottom-left">
+                <!--                动态及粉丝数量-->
+                <div class="infos">
+                    <a id="we" href = "javascript:;">
+                        <span id="we-num"></span><br>
+                        <span >说说</span>
+                    </a>
+                    <span id="line">|</span>
+                    <a id="fans" href = "javascript:;">
+                        <span id="fans-num"></span><br>
+                        <span >粉丝</span>
+                    </a>
+                </div>
+                <div class="images">
+                    <p class="images-header">相册</p>
+                    <img src = "./images/preview.jpg" alt = "相册">
+                    <img src = "./images/preview.jpg" alt = "相册">
+                    <a href = "javascript:;" class="more-img">查看更多&nbsp;></a>
+                </div>
+            </div>
+            <div class="bottom-right">
+                <div class="nav-right">
+                    <a href = "#" id="all-blog">全部</a>
+                    <a href = "javascript:;" id="articles">动态</a>
+                    <a href = "javascript:;" id="videos">视频</a>
+                    <!--                    搜索微博-->
+                    <!--                    <div class="right-search">-->
+                    <!--                        <input type = "text">-->
+                    <!--                    </div>-->
+                </div>
+                <ul class="blogs">
+
+
                 </ul>
             </div>
         </div>
-
-        <div class="bottom-right">
-            <div class="bottom-top">
-                <div class="headp"></div>
-                <div class="info">
-                    <a class="username">username</a><br>
-                    <a class="time">今天来自weibo.com</a><br>
-                </div>
-                <div class="article">
-                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
-                    <p class="readall" onclick="read(this)"></p>
-                </div>
-                <img src="images/preview.jpg" alt="">
-            </div>
-            <div class="bottom-middle link-top"></div>
-            <div class="bottom-bottom">
-                <ul>
-                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
-                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
-                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
-                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
-                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="bottom-right">
-            <div class="bottom-top">
-                <div class="headp"></div>
-                <div class="info">
-                    <a class="username">username</a><br>
-                    <a class="time">今天来自weibo.com</a><br>
-                </div>
-                <div class="article">
-                    <a>这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊这里是内容，看这里啊</a>
-                    <p class="readall" onclick="read(this)"></p>
-                </div>
-                <img src="images/preview.jpg" alt="">
-            </div>
-            <div class="bottom-middle link-top"></div>
-            <div class="bottom-bottom">
-                <ul>
-                    <li class="read link-right">阅读<a class="messageReadNum">99</a></li>
-                    <li class="collect link-right">收藏 <a class="messageCollectNum">99</a></li>
-                    <li class="share link-right">转发 <a class="messageTranspondNum">99</a></li>
-                    <li class="comment link-right">评论 <a class="messageCommentNum">99</a></li>
-                    <li class="agree">点赞 <a class="messageAgreeNum">99</a></li>
-                </ul>
-            </div>
-        </div>
-
     </div>
 
 </div>
-
+<div class="back">
+    <!--回到顶部-->
+    <a class="back-top" href="#">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
 </body>
+<script src ="js/jquery.min.js"></script>
+<script src ="js/jquery.cookie.js"></script>
+<script src ="js/person2.js"></script>
 
 </html>
