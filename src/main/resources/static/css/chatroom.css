@@ -249,11 +249,7 @@ a {
 .img-wrapper-left, .img-wrapper-right img {
     width: 100%;
 }
-.img-wrapper-left>img{
-    background-image: url("../images/my_test.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
+
 .user-left .triangle-left::after {
     content: '';
     width: 0;
@@ -267,7 +263,7 @@ a {
 
 /*左侧消息框显示*/
 .user-left .mes-left {
-    width: 60%;
+    width: 80%;
     height: auto;
     background-color: #FFFFFF;
     font-style: normal;
@@ -302,7 +298,7 @@ a {
 }
 
 .user-right .mes-right {
-    width: 60%;
+    width: 80%;
     height: auto;
     background-color: #FFFFFF;
     margin:9px;

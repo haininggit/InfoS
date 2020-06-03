@@ -118,7 +118,7 @@
 
 }
 .functions > ul>li{
-   list-style: none;
+    list-style: none;
     /*margin: auto 0;*/
     text-decoration: none;
     text-align: center;
@@ -198,7 +198,7 @@
     list-style: none;
     margin: auto 0;
     text-decoration: none;
-    text-align: left;
+    text-align: center;
     font-style: normal;
     width: 50px;
     /* height: 35px;    */
@@ -295,23 +295,6 @@
 /*
     消息的下拉列表
 */
-
-
-.setting-message >#notices{
-    width: 10px;
-    height: 10px;
-    display: block;
-    position: relative;
-    top: 15px;
-    float: right;
-    background-color: red;
-    line-height: 10px;
-    text-align: center;
-    font-size: 6px;
-    color: #f6fbfd;
-    border-radius: 10px;
-
-}
 .message-wrapper .drop-down-setting{
     width: 100px;
     height: 268px;
