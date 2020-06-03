@@ -1,13 +1,7 @@
 package com.keshe.controller;
 
-import com.keshe.entity.Img;
-import com.keshe.entity.Message;
 import com.keshe.entity.RetJsonData;
-import com.keshe.mapper.ImgMapper;
-import com.keshe.service.ImgService;
 import com.keshe.service.MessageService;
-import com.keshe.tools.Pack;
-import com.keshe.tools.QiniuUpload;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,11 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.soap.SAAJResult;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.RecursiveTask;
 
 /**
  * @Description TODO
@@ -69,7 +58,10 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
-        return messageService.saveMessageOnImg(files, userId, messageInfo, lable);
+        if (messageInfo != null){
+            return messageService.saveMessageOnImg(files, userId, messageInfo, lable);
+        }
+        return new RetJsonData(false, "信息为空");
     }
 
 
@@ -92,7 +84,11 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
-        return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+        if (messageInfo != null){
+            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+        }
+        return new RetJsonData(false, "信息为空");
+
     }
 
 
@@ -105,6 +101,44 @@ public class MessageController {
     @ResponseBody
     public RetJsonData messageInfoPage(String userId){
         return messageService.messageInfoPage(userId);
+    }
+
+
+    /**
+     * 获取单个message信息
+     *  成功：返回   success:true
+     *               errorMsg:NULL
+     *               data:user
+     *                    message
+     *                    list<comment>
+     *  失败：返回   success:false
+     *               errorMsg:查询数据失败
+     *               data:null
+     * @param messageId
+     * @return
+     */
+    @RequestMapping("/getMessage")
+    @ResponseBody
+    public RetJsonData getMessage(String messageId){
+        return messageService.getMessage(messageId);
+    }
+
+
+    /**
+     * 增加阅读量
+     *  成功：返回   success:true
+     *               errorMsg:NULL
+     *               data:阅读量增加成功
+     *  失败：返回   success:false
+     *               errorMsg:阅读量增加失败
+     *               data:null
+     * @param messageId
+     * @return
+     */
+    @RequestMapping("/addMessageReadNum")
+    @ResponseBody
+    public RetJsonData addMessageReadNum(String messageId){
+        return messageService.addMessageReadNum(messageId);
     }
 
 

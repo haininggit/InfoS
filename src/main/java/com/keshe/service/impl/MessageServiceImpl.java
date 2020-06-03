@@ -32,6 +32,8 @@ public class MessageServiceImpl implements MessageService {
     @Resource
     private RelationMapper relationMapper;
     @Resource
+    private CommentMapper commentMapper;
+    @Resource
     private Pack pack;
     @Resource
     private QiniuUpload qiniuUpload;
@@ -40,8 +42,9 @@ public class MessageServiceImpl implements MessageService {
     public RetJsonData delPersonalMessage(String messageId) {
         List<Img> imgs = imgMapper.imgByMessageId(messageId);
         Video video = videoMapper.videoByMessageId(messageId);
+        String userId = messageMapper.messageByMessageId(messageId).getUserId();
         if (imgs.size() != 0 || video != null){
-            if (messageMapper.delMessage(messageId) > 0){
+            if (messageMapper.delMessage(messageId) > 0 && userMapper.redUserMsgCount(userId) > 0){
                 if (videoMapper.delVideoByMessageId(messageId) > 0 || imgMapper.delImgsByMessageId(messageId) > 0){
                     return new RetJsonData(true,"删除成功", null);
                 }
@@ -96,7 +99,7 @@ public class MessageServiceImpl implements MessageService {
     public RetJsonData saveMessageOnImg(MultipartFile[] files, String userId, String messageInfo, String lable) throws Exception {
         Message message = pack.packMessage(userId, messageInfo, lable);
         List<Img> imgs = new ArrayList<>();
-        if (messageMapper.saveMessage(message) > 0){
+        if (messageMapper.saveMessage(message) > 0 && userMapper.icrUserMsgCount(userId) > 0){
             if (files.length > 0){
                 String messageid = messageMapper.getMessageId(userId, messageInfo);
                 if (message != null){
@@ -122,7 +125,7 @@ public class MessageServiceImpl implements MessageService {
     public RetJsonData saveMessageOnVideo(MultipartFile file, String userId, String messageInfo, String lable) throws Exception {
         Message message = pack.packMessage(userId, messageInfo, lable);
         List<Img> imgs = new ArrayList<>();
-        if (messageMapper.saveMessage(message) > 0){
+        if (messageMapper.saveMessage(message) > 0 && userMapper.icrUserMsgCount(userId) > 0){
             if (file != null){
                 String messageid = messageMapper.getMessageId(userId, messageInfo);
                 if (message != null){
@@ -141,6 +144,42 @@ public class MessageServiceImpl implements MessageService {
             return new RetJsonData(true, "动态存储失败");
     }
 
+    @Override
+    public RetJsonData getMessage(String messageId) {
+        Map<String, Object> map = new HashMap<>();
+        Message message = messageMapper.messageByMessageId(messageId);
+        User user = userMapper.userByUserId(message.getUserId());
+        user.setUserRealname(null);
+        user.setUserPassword(null);
+        user.setUserEmail(null);
+        List<CommentAndName> list = new ArrayList<>();
+        List<Comment> comments = commentMapper.commentByMessageId(message.getMessageId());
+        if (message != null){
+            for (int i = 0; i < comments.size(); i++){
+                CommentAndName commentAndName = new CommentAndName();
+                String userName = userMapper.userByUserId(comments.get(i).getUserId()).getUserName();
+                commentAndName.setComment(comments.get(i));
+                commentAndName.setUserName(userName);
+                list.add(commentAndName);
+            }
+            map.put("comments", list);
+            map.put("message", message);
+            map.put("user", user);
+            return new RetJsonData(true, map, null);
+        }
+        return new RetJsonData(false, "查询数据失败");
+    }
+
+
+    @Override
+    public RetJsonData addMessageReadNum(String messageId) {
+        if (messageMapper.addReadnum(messageId) > 0){
+            return new RetJsonData(true, "阅读量增加成功", null);
+        }
+        return new RetJsonData(false, "阅读量增加失败");
+    }
+
+
     /**
      * 更新转发后message的转发数
      * @param forward
@@ -149,6 +188,9 @@ public class MessageServiceImpl implements MessageService {
     public Integer forWardUpdateTranspondnum(Forward forward) {
         return messageMapper.forWardUpdateTranspondnum(forward);
     }
+
+
+
 
     @Override
     public Message findMessageById(String messageId) {
