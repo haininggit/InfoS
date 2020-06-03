@@ -1,5 +1,7 @@
 package com.keshe.service;
 
+import com.keshe.entity.RetJsonData;
+
 /**
  * @InterfaceName LableService
  * @Description TODO
@@ -8,4 +10,11 @@ package com.keshe.service;
  * @Version 1.0
  */
 public interface LableService {
+
+    /**
+     * 查询所有标签
+     * @return
+     */
+    RetJsonData getAllLable();
+
 }

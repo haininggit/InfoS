@@ -74,7 +74,7 @@ public class MessageController {
 
 
     /**
-     * 发表动态（包含图片）
+     * 发表动态（包含视频）
      *  成功：返回   success:true
      *               errorMsg:NULL
      *               data:发表成功
@@ -97,7 +97,7 @@ public class MessageController {
 
 
     /**
-     *
+     *返回主页信息
      * @param userId
      * @return
      */

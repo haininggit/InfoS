@@ -102,6 +102,7 @@ public class Pack {
         message.setUserId(userId);
         message.setMessageInfo(messageInfo);
         message.setMessageLable(lable);
+        message.setMessageCtime(new Date());
         message.setMessageAgreeNum("0");
         message.setMessageCollectNum("0");
         message.setMessageCommentNum("0");

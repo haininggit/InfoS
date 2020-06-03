@@ -1,11 +1,11 @@
 server:
-  port: 80
+  port: 8080
 
 spring:
   datasource:
     username: root
     url: jdbc:mysql://127.0.0.1:3306/infos?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
-    password: tcp666
+    password: 889769
   mvc:
     #日期格式通配符(springMVC)
     date-format: yyyy-MM-dd mm:ss

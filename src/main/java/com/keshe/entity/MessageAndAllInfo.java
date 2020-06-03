@@ -22,4 +22,5 @@ public class MessageAndAllInfo {
     private Message message;
     private List<Img> imgs;
     private Video video;
+    private User user;
 }
