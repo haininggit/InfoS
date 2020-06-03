@@ -70,7 +70,7 @@
         <div id="left" class="left">
             <ul class="nav-left">
                 <li>首页</li>
-                <li>我的收藏</li>
+                <li id="collect">我的收藏</li>
                 <li>我的赞</li>
             </ul>
             <!-- 动态分类 -->
@@ -84,12 +84,12 @@
         <div id="middle" class="middle">
             <div class="writearticle" id="writearticle">
                 <p>有什么新鲜事要分享给大家</p>
-                <textarea></textarea>
-                <div class="link-top"></div>
+                <textarea id="messageInfo"></textarea>
+<!--                <div class="link-top"></div>-->
                 <div class="toolbar">
                     <ul>
-                        <li><i class="fas fa-images"></i></li>
-                        <li><i class="fas fa-photo-video"></i></li>
+                        <li><i class="fas fa-images" id="pic"></i></li>
+                        <li><i class="fas fa-photo-video" id="vid"></i></li>
                         <li><i class="fas fa-smile"></i></li>
                         <li><i class="fas fa-eye"></i></li>
                     </ul>
@@ -99,320 +99,27 @@
                     </div>
                 </div>
             </div>
+            <div class="upload-content-img">
+                <div class="content-img">
+                    <ul class="content-img-list">
+                        <!-- <li class="constent-img-list-item"><img src="https://www.baidu.com/img/bd_logo1.png" alt=""><a class="delete-btn"><i class="ico-delete"></i></a></li> -->
+                    </ul>
+                    <div class="file">
+                        <i class="ico-plus"></i>上传图片
+                        <form action="" enctype="multipart/form-data" name="file" id="" method="post">
+                        <input type="file" name="file" accept="image/*" id="upload" >
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <form action="" name="uploadvid" enctype="multipart/form-data" id="uploadvid" method="post">
+                <input type="file" accept="video/*" id="files" class="files" />
+            </form>
+            <ul id="seclctlable" class="seclctlable">
+
+            </ul>
             <ul class="blogs">
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <img src="./images/preview.jpg" alt="">
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="blog-wrapper">
-                        <!--个人信息分为左右两部分-->
-                        <div class="blog-user-info">
-                            <!--头像 昵称 发送时间-->
-                            <div class="B-left">
-                                <div class="left-avatar"><img src="./images/avatar.jpg" alt="头像"></div>
-                                <div class="name-time">
-                                    <h2 class="blog-nickname">毛毛</h2>
-                                    <h3 class="send-time">4月5日 20:59</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <!--动态正文-->
-                        <div class="blog-content">
-                            <p class="blog-text">
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-                                @谭松韵seven 送你一碗长寿面，祝你生日快乐！@谭松韵seven 送你一碗长寿面，祝你生日快乐！
-
-                            </p>
-                            <!-- 可能动态中只有文字 -->
-                            <div class="blog-img-video">
-                                <!--                                <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-                                <!--                                    <img src = "./images/preview.jpg" alt = "">-->
-
-                            </div>
-                        </div>
-                        <!--评论 点赞等-->
-                        <!--评论 点赞等-->
-                        <div class="blog-views">
-                            <span>阅读&nbsp;<span class="read-num">3</span></span>
-                            <a href="javascript:;" class="forward">转发</a>
-                            <a href="javascript:;" class="comment">评论</a>
-                            <a href="javascript:;" class="praise">点赞</a>
-                        </div>
-                    </div>
-                </li>
-
 
             </ul>
         </div>
@@ -420,11 +127,11 @@
             <div class="right-top-wrapper">
                 <div class="right-top">
                     <div class="right-user-avatar">
-                        <img src="./images/avatar.jpg" alt="头像">
+                        <img src="./images/avatar.jpg" alt="头像" id="headp">
                     </div>
                 </div>
                 <p class="user-nickname">
-                    <span>毛毛hhh456</span>
+                    <span></span>
                 </p>
                 <ul class="user-infos">
                     <li>
@@ -449,4 +156,7 @@
 </div>
 
 </body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/home.js"></script>
 </html>
