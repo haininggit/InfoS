@@ -228,6 +228,10 @@ li .blog-wrapper{
     border-radius: 25px;
     margin-right: 5px;
 }
+.left-avatar img{
+    width: 100%;
+    height: 100%;
+}
 .B-left .blog-nickname{
     font-size: 14px;
     color: #333333;
@@ -279,17 +283,20 @@ li .blog-wrapper{
     /*height: 40px;*/
     height: auto;
     line-height: 25px;
+    word-break: break-word;
 }
 .blog-img-video{
     width: 100%;
     height: auto;
     display: flex;
+    flex-wrap: wrap ;
     justify-content: center;
 }
 .blog-img-video img{
     width: 40%;
     height: auto;
-    margin-left: 10px;
+    margin: 10px;
+
 }
 .blog-img-video video{
     width: 90%;
@@ -360,6 +367,7 @@ li .blog-wrapper{
 }
 .right-top img{
     width: 100%;
+    height: 100%;
 }
 .right .user-nickname{
     width: 100%;

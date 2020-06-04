@@ -172,6 +172,7 @@
             data: {type: type},
             type: "POST",
             success: function (data) {
+                console.log(data);
                 var videos = data.data;
 
                 for (var i = 0; i < data.data.length; i++) {

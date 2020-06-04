@@ -433,7 +433,7 @@ $("#collect").click(function () {
                         "                                <div class=\"blog-user-info\">\n" +
                         "                                    <!--头像 昵称 发送时间-->\n" +
                         "                                    <div class=\"B-left\">\n" +
-                        "                                        <div class=\"left-avatar\"><img src='" + result.data[i].user.userImg + "' alt = \"头像\"></div>\n" +
+                        "                                        <div class=\"left-avatar\"><img src='" + result.data[i].user.userImg + "' alt = \"\"></div>\n" +
                         "                                        <div class=\"name-time\">\n" +
                         "                                            <h2 class=\"blog-nickname\">" + result.data[i].user.userName + "</h2>\n" +
                         "                                            <h3 class=\"send-time\">" + result.data[i].messageInfo.message.messageCtime + "</h3>\n" +

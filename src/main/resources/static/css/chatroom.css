@@ -403,9 +403,9 @@ a {
     overflow: auto;
     /*禁止改变textarea的大小*/
     resize: none;
-    padding: 0px;
+    padding: 0 10px;
 
-
+    border: none;
     /*word-wrap: break-word;*/
     word-break: break-all;
 }
