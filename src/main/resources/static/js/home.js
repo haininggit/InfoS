@@ -2,7 +2,29 @@ var imgFile = []; //文件流
 var imgSrc = []; //图片路径
 var imgName = []; //图片名字
 var vidorpic = true
+/**
+ * socket
+ * @type {jQuery|*}
+ */
+comId = $.cookie("userId");
+socket = null;
 
+// 初始化websocket
+socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+socket.onopen = function () {
+    console.log("hkjllllllllllllllllllll");
+}
+socket.onmessage = function (data) {
+    var mesnum = document.getElementById('notices').innerText;
+    mesnum = parseInt(mesnum) + 1;
+    document.getElementById('notices').innerText = mesnum;
+    document.getElementById('notices').style.display = 'block'
+    console.log("data:" + data);
+    var record = JSON.parse(data.data);
+
+    console.log("你收到了来自" + record.comUserId + "的消息");
+}
+////////////////////////////////////////////////////
 $(function () {
     // 鼠标经过显示删除按钮
     $('.content-img-list').on('mouseover', '.content-img-list-item', function () {

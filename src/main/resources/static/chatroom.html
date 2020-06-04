@@ -144,7 +144,7 @@
                         <a href="javascript:;"><i class="fas fa-image"></i></a>
                         <a href="javascript:;"><i class="fas fa-link"></i></a>
                         <a href="javascript:;"><i class="fas fa-bell"></i></a>
-                        <input type="button" value="send" id="send">
+
                     </div>
                     <div class="text-input">
                         <!--required规定文本区域为必填的
@@ -152,7 +152,9 @@
                         -->
                         <textarea name="text-mes" id="text-mes" class="text-mes" required autofocus></textarea>
                     </div>
+                    <input type="button" value="send" id="send">
                 </div>
+
             </div>
             <!--            <div class="box1">-->
             <!--                <ul id="chatrecord">-->
@@ -169,6 +171,7 @@
 <script>
     let comId = $.cookie("userId");
     let socket = null;
+    var userId=null;
     onload = function () {
         socket = new WebSocket("ws:localhost:80//websocket/" + comId);
         socket.onopen = function () {
@@ -201,14 +204,14 @@
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].userId != comId) {
-                            var li = "  <li onclick='chat(this)'>\n" +
+                            var li = "  <li onclick='chat(this)' id='"+data[i].userId+"'>\n" +
                                 "                            <div class=\"user-avatar-wrapper\">\n" +
                                 "                                <a href = \"javascript:;\"><img src=\"./images/avatar.jpg\" alt=\"头像\"></a>\n" +
                                 "                            </div>\n" +
                                 "                            <div class=\"user-info\">\n" +
                                 "                                <div class=\"user-info-top\">\n" +
                                 "                                    <a href = \"javascript:;\">" +
-                                "<div class=\"user-name\">" + data[i].userId + "</div>" +
+                                "<div class=\"user-name\">" +data[i].userName + "</div>" +
                                 "</a>\n" +
                                 "                                    <div class=\"time\">05-25</div>\n" +
                                 "                                </div>\n" +
@@ -233,7 +236,7 @@
         console.log("text:" + text)
         var toId = $("#friend_id").text();
         var data = {
-            toUserId: toId,
+            toUserId: userId,
             comUserId: comId,
             message: text,
             recordTime: new Date()
@@ -251,14 +254,16 @@
 
         var messages = document.getElementById("messages");
         messages.scrollTop=messages.scrollHeight;
+        document.getElementById("text-mes").innerText="";
     })
 
     function chat(obj) {
 
-        var userId = obj.children[1].children[0].children[0].children[0].innerText;
+        userId = obj.id;
         comId=$.cookie("userId");
         console.log("to:"+userId+"com"+comId)
-        $("#friend_id").html(userId)
+        var user_Name=document.getElementById(userId).children[1].children[0].children[0].innerText;
+        $("#friend_id").html(user_Name)
         $("#user-right").html("")
 
         $.ajax({

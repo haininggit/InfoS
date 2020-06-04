@@ -10,25 +10,29 @@
 </head>
 <body>
 <!--导航条-->
-<nav class="mainNav">
+<nav class="mainNav" style="z-index: 9">
     <div class="logo">
 
     </div>
     <div class="functions">
-        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="">
+        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt=""
+                                                                          onclick="search()">
         <ul>
-            <li><a href="">我要写走测试</a></li>
-            <li><a href="">首页</a></li>
-            <li><a href="">视频</a></li>
-            <li><a href="">发现</a></li>
-            <li><a href="">游戏</a></li>
+            <li><a href="person02.html">我要写走测试</a></li>
+            <li><a href="home.html">首页</a></li>
+            <li><a href="video.html">视频</a></li>
+            <li><a href="mynote.html">关注</a></li>
+            <li><a href="chatroom.html" onclick="function f() {
+                document.getElementById('notices').innerText=0;
+              document.getElementById('notices').style.display='none';
+            }">聊天</a></li>
         </ul>
     </div>
     <div class="setting">
         <ul>
             <li class="setting-message">
                 <!-- 下拉小三角 -->
-                消息
+                消息<p id="notices" style="display: none">0</p>
                 <div class="setting-wrapper">
                     <!-- <div class="triangle"></div> -->
                     <ul class="drop-down-message">
@@ -70,12 +74,11 @@
         <div class="thing" id="thing">
 
 
-
             <div class="butt">
 
                 <li><a href="#">收藏</a></li>
                 <li><a href="#">转发</a></li>
-                <li><a href="#" >评论</a></li><!--onclick="f()"-->
+                <li><a href="#">评论</a></li><!--onclick="f()"-->
                 <!--<script  >-->
                 <!--function f() {-->
                 <!--// alert("弹出评论框");< img src="../images/head.png" >-->
@@ -104,27 +107,29 @@
 
             <!--评论部分-->
 
-            <div id="com"  >
+            <div id="com">
                 <ul id="pn">
                     <li class="list0">
 
                         <div class="content">
                             <div class="comment-list" id="comment-list">
 
-<!--                                <div class="comment" user="self">-->
-<!--                                    <div class="comment-right">-->
-<!--                                        <div class="comment-text"><span class="user">我：</span>看哭了留卡号吧</div>-->
-<!--                                        <div class="comment-date">-->
-<!--                                            <br>-->
-<!--                                            02-14 24:00-->
-<!--                                            <a class="comment-zan" href="javascript:;" total="0" my="0">赞</a>-->
-<!--                                            <a class="comment-dele" href="javascript:;">删除</a>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <!--                                <div class="comment" user="self">-->
+                                <!--                                    <div class="comment-right">-->
+                                <!--                                        <div class="comment-text"><span class="user">我：</span>看哭了留卡号吧</div>-->
+                                <!--                                        <div class="comment-date">-->
+                                <!--                                            <br>-->
+                                <!--                                            02-14 24:00-->
+                                <!--                                            <a class="comment-zan" href="javascript:;" total="0" my="0">赞</a>-->
+                                <!--                                            <a class="comment-dele" href="javascript:;">删除</a>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
                             </div>
                             <div class="hf">
-                                <textarea type="text"  id="text" class="hf-text" autocomplete="off" maxlength="100" placeholder="评论..." onblur="textOnblur(this)" name="root" onfocus=" textGetFocus(this)"> </textarea>
+                                <textarea type="text" id="text" class="hf-text" autocomplete="off" maxlength="100"
+                                          placeholder="评论..." onblur="textOnblur(this)" name="root"
+                                          onfocus=" textGetFocus(this)"> </textarea>
                                 <button class="hf-btn" onclick="send(this)">评论</button>
                                 <span class="hf-nub">0/100</span>
                             </div>
@@ -133,7 +138,7 @@
 
                 </ul>
                 <script type="text/javascript">
-                function textOnblur(obj){
+                    function textOnblur(obj) {
                         //
                         // if(obj.innerText.length==0){
                         //     // console.log("change className....")
@@ -143,11 +148,11 @@
 
                     }
 
-               function textGetFocus(obj){
-                   // console.log(obj.parentNode)
-                   obj.parentNode.className='hf hf-on';
-                   obj.value = obj.value == '评论…' ? '' : obj.value;
-                }
+                    function textGetFocus(obj) {
+                        // console.log(obj.parentNode)
+                        obj.parentNode.className = 'hf hf-on';
+                        obj.value = obj.value == '评论…' ? '' : obj.value;
+                    }
 
                 </script>
             </div>
@@ -158,7 +163,7 @@
             <a id="but3" href="#">Infos 认证 </a>
             <p style="font-size: 15px">昵称 </p>
             <br/>
-            <p>🚪  行业类别    优秀博主 编辑 </p>
+            <p>🚪 行业类别 优秀博主 编辑 </p>
             <p>👉 简介： 好好学习 不熬夜</p>
             <br/>
             <a style="text-align: center; cursor: pointer;" href="#"> 更多 ＞</a>
@@ -167,7 +172,7 @@
 
     <!--底部-->
     <div class="foot">
-        <p>Infos 客服    客服热线 8888-8888</p>
+        <p>Infos 客服 客服热线 8888-8888</p>
 
         <p>意见反馈 开放平台 商务合作</p>
         <p>Copyright@2020-2020 Infos 开发小组</p>
@@ -185,9 +190,9 @@
     var messageId = $.cookie("messageId")
     var userName = $.cookie("userName");
     onload = function () {
-console.log("hello,world")
+        // console.log("hello,world")
 
-      console.log(messageId)
+        // console.log(messageId)
         $.ajax({
             url: "message/getMessage",
             type: "POST",
@@ -200,43 +205,43 @@ console.log("hello,world")
                 var commens = data.data.comments;
 
                 var message1 = document.createElement("div");
-                message1.className="message";
-                message1.innerHTML=" <div class=\"head\">\n" +
-                    "                    <img src='"+user.userImg+"' class=\"round_icon\">\n" +
+                message1.className = "message";
+                message1.innerHTML = " <div class=\"head\">\n" +
+                    "                    <img src='" + user.userImg + "' class=\"round_icon\">\n" +
                     "                </div>\n" +
                     "                <div class=\"msg\">\n" +
                     "                    <div class=\"name\">\n" +
                     "\n" +
-                    "                        <a id=\"but1\">"+user.userName+"</a>\n" +
+                    "                        <a id=\"but1\">" + user.userName + "</a>\n" +
                     "\n" +
                     "                        <a id=\"but2\">➕ 关注</a>\n" +
                     "                    </div>\n" +
                     "\n" +
                     "                    <div class=\"sub\">\n" +
-                   message.messageInfo+
-                    "                        <div id=\"mediaList\" style=\"width: 100%;height: 400px;display: block;float: left;background-color:red;\"></div>\n" +
+
+                    "                       " + message.message.messageInfo + " <div id=\"mediaList\" style=\"width: 100%;height: 400px;display: block;float: left;background-color:red;\"></div>\n" +
                     "\n" +
                     "\n" +
                     "                    </div>\n" +
                     "                </div>"
 
-                console.log(message1)
+                // console.log(message1)
                 document.getElementById("thing").prepend(message1)
 
-                console.log(commens);
+                // console.log(commens);
                 for (var i = 0; i < commens.length; i++) {
-                   var comment=document.createElement("div");
-                    comment.className="comment"
-                    comment.user="self";
-                    comment.innerHTML=" <div class=\"comment-right\" id='"+commens[i].comment.commentId+"'>\n" +
-                        "                                        <div class=\"comment-text\"><span class=\"user\">"+commens[i].userName+":</span>"+commens[i].comment.commentInfo+"</div>\n" +
+                    var comment = document.createElement("div");
+                    comment.className = "comment"
+                    comment.user = "self";
+                    comment.innerHTML = " <div class=\"comment-right\" id='" + commens[i].comment.commentId + "'>\n" +
+                        "                                        <div class=\"comment-text\"><span class=\"user\">" + commens[i].userName + ":</span>" + commens[i].comment.commentInfo + "</div>\n" +
                         "                                        <div class=\"comment-date\">\n" +
                         "                                            <br>\n" +
-                        "                                            "+commens[i].comment.commentTime+"" +
+                        "                                            " + commens[i].comment.commentTime + "" +
                         "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
                         "                                        </div>\n" +
                         "                                    </div>"
-                   document.getElementById("comment-list").append(comment);
+                    document.getElementById("comment-list").append(comment);
 
                 }
 
@@ -246,15 +251,18 @@ console.log("hello,world")
 
     function send(obj) {
 
-        console.log("0000000000000000000000000")
-
 
         var textinput = obj.parentNode.children[0];
         var userId = $.cookie("userId");
         var commentInfo = textinput.value;
         var sendType = textinput.getAttribute("name");
-        console.log(sendType+":sendtype")
+        // console.log(sendType + ":sendtype")
         if (sendType == "root") {
+            // console.log("root:....................")
+            // console.log(userId);
+            // console.log(messageId);
+            // console.log(commentInfo);
+            // console.log("....................")
             $.ajax({
                 url: "comment/addComment",
                 type: "post",
@@ -265,31 +273,37 @@ console.log("hello,world")
                 },
                 dataType: "JSON",
                 success: function (data) {
+                    // console.log(data);
                     /**
                      * data:{
                      *     userName,commentId,commentTime
                      * }
                      * @type {string}
+                     *
+                     *
                      */
-                    var comment = "<div class=\"comment\" user=\"self\">\n" +
-                        "                                    <div class=\"comment-right\" id='" + data.data.commentId + "'>\n" +
-                        "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + "：</span>" + data.data.commentInfo + "</div>\n" +
+
+                    var div_comment = document.createElement("div");
+                    div_comment.className = "comment"
+                    div_comment.user = "self";
+                    div_comment.innerHTML = "<div class=\"comment-right\" id='" + data.data.commentId + "'>\n" +
+                        "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + ":</span>" + commentInfo + "</div>\n" +
                         "                                        <div class=\"comment-date\">\n" +
                         "                                            <br>\n" +
-                        "                                           " + data.data.commentTime + "\n" +
+                        "                                            " + data.data.commentTime + "" +
                         "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
                         "                                        </div>\n" +
-                        "                                    </div>\n" +
-                        "                                </div>"
-                    $("#comment-list").appendChild(comment);
+                        "                                    </div>"
+
+
+                    document.getElementById("comment-list").append(div_comment);
 
                 }
 
             })
         } else if (sendType == "son") {
             var replyInfo = $("#text").val();
-
-            console.log("userId:"+userId+"\ncomment_replyId:"+comment_replyId+"\nreplyInfo:"+replyInfo+"...........................")
+            // console.log("userId:" + userId + "\ncomment_replyId:" + comment_replyId + "\nreplyInfo:" + replyInfo + "...........................")
             $.ajax({
                 url: "reply/saveReply",
                 type: "POST",
@@ -300,9 +314,13 @@ console.log("hello,world")
                 },
                 success: function (data) {
 
+                    if (comment_user.indexOf(':') > 0) {
+                        comment_user = comment_user.substr(0, comment_user.indexOf(':'))
+                    }
 
+                    // console.log("comment_user:"+comment_user)
                     var reply = data.data;
-                    console.log(data)
+                    // console.log(data)
                     var comment = "<div class=\"comment\" user=\"self\">\n" +
                         "                                    <div class=\"comment-right\" id='" + reply.replyId + "'>\n" +
                         "                                        <div class=\"comment-text\"><span class=\"user\">" + userName + ":@回复" + comment_user + "</span>" + ':' + replyInfo + "</div>\n" +
@@ -323,13 +341,17 @@ console.log("hello,world")
                     document.getElementById("text").innerText = "";
 
 
+                },
+                error: function (data) {
+                    console.log(data)
+
                 }
             })
 
         }
 
 
-        console.log("change className....")
+        // console.log("change className....")
         document.getElementById("text").parentNode.className = 'hf';
         document.getElementById("text").value = '评论…';
 
@@ -337,43 +359,44 @@ console.log("hello,world")
     }
 
     function reply(obj) {
-        console.log(obj.parentNode)
+
+        obj.onclick=null;
         document.getElementById("text").parentNode.className = 'hf hf-on';
         document.getElementById("text").value = document.getElementById("text").value == '评论…' ? '' : document.getElementById("text").value;
         document.getElementById("text").focus()
         comment_replyId = obj.parentNode.parentNode.id;
 
-        console.log( comment_replyId)
+        // console.log("comment_replyId:" + comment_replyId)
         comment_user = obj.parentNode.parentNode.children[0].children[0].innerText;
-        comment_user = comment_user.substr(0, comment_user.indexOf(":"))
+        // comment_user = comment_user.substr(0, comment_user.indexOf(":"))
 
         $.ajax({
                 url: "reply/getReplysById",
                 data: {parentId: comment_replyId},
                 type: "POST",
                 success: function (data) {
-                    console.log(data)
+                    // console.log(data)
                     var reples = data.data;
-                    if (reples!="没有数据"){
-                    for (var i = 0; i < reples.length; i++) {
-                        var reply = reples[i];
-                        var comment = "<div class=\"comment\" user=\"self\">\n" +
-                            "                                    <div class=\"comment-right\" id='" + reply.reply.replyId + "'>\n" +
-                            "                                        <div class=\"comment-text\"><span class=\"user\">" + reply.userName + ":@回复" + reply.byUserName + "</span>" + ':' + reply.reply.replyInfo + "</div>\n" +
-                            "                                        <div class=\"comment-date\">\n" +
-                            "                                            <br>\n" +
-                            "                                           " + reply.reply.replyTime + "\n" +
-                            "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
-                            "                                        </div>\n" +
-                            "                                    </div>\n" +
-                            "                                </div>";
+                    if (reples != "没有数据") {
+                        for (var i = 0; i < reples.length; i++) {
+                            var reply = reples[i];
+                            var comment = "<div class=\"comment\" user=\"self\">\n" +
+                                "                                    <div class=\"comment-right\"  id='" + reply.reply.replyId + "' >\n" +
+                                "                                        <div class=\"comment-text\"><span class=\"user\">" + reply.userName + ":@回复" + reply.byUserName + "</span>" + ':' + reply.reply.replyInfo + "</div>\n" +
+                                "                                        <div class=\"comment-date\">\n" +
+                                "                                            <br>\n" +
+                                "                                           " + reply.reply.replyTime + "\n" +
+                                "                                            <a class=\"comment-dele\" href=\"javascript:;\" onclick='reply(this)'>回复</a>\n" +
+                                "                                        </div>\n" +
+                                "                                    </div>\n" +
+                                "                                </div>";
 
 
-                        /**
-                         * 将生成的comment追加到 document.getElementById(comment_replyId)之后
-                         */
-                        $(comment).insertAfter($(document.getElementById(comment_replyId)));
-                    }
+                            /**
+                             * 将生成的comment追加到 document.getElementById(comment_replyId)之后
+                             */
+                            $(comment).insertAfter($(document.getElementById(comment_replyId).parentNode));
+                        }
                     }
 
 

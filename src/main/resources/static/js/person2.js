@@ -2,6 +2,31 @@ let userId = $.cookie("userId");
 let pagenum = 1;
 
 window.onload = function () {
+
+
+    /**
+     * socket
+     * @type {jQuery|*}
+     */
+    comId = $.cookie("userId");
+    socket = null;
+
+// 初始化websocket
+    socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+    socket.onopen = function () {
+        console.log("hkjllllllllllllllllllll");
+    }
+    socket.onmessage = function (data) {
+        var mesnum = document.getElementById('notices').innerText;
+        mesnum = parseInt(mesnum) + 1;
+        document.getElementById('notices').innerText = mesnum;
+        document.getElementById('notices').style.display = 'block'
+        console.log("data:" + data);
+        var record = JSON.parse(data.data);
+
+        console.log("你收到了来自" + record.comUserId + "的消息");
+    }
+////////////////////////////////////////////////////
     page(pagenum);
 };
 

@@ -136,10 +136,10 @@
 <script src="js/jquery.cookie.js"></script>
 <script src="js/main.js"></script>
 <script>
-    let comId = $.cookie("userId");
-    let socket = null;
-    onload = function () {
 
+    onload = function () {
+         comId = $.cookie("userId");
+         socket = null;
 
         // 初始化websocket
         socket = new WebSocket("ws:localhost:80//websocket/" + comId);
