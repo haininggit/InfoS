@@ -285,9 +285,14 @@ li .blog-wrapper{
     justify-content: center;
 }
 .blog-img-video img{
-    width: 200px;
-    height: 175px;
-    margin-left: 20px;
+    width: 40%;
+    height: auto;
+    margin-left: 10px;
+}
+.blog-img-video video{
+    width: 90%;
+    height: auto;
+    margin:0 auto;
 }
 /*评论转发点赞*/
 .blog-views{

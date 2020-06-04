@@ -244,10 +244,10 @@ window.onload = function () {
                         "                                <!--评论 点赞等-->\n" +
                         "                                <div class=\"blog-views\">\n" +
                         "                                    <span>阅读&nbsp;<span class=\"read-num\">" + result.data.messages[i].message.messageReadNum + "</span></span>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + result.data.messages[i].message.messageReadNum + "</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + result.data.messages[i].message.messageTranspondNum+ "</a>\n" +
                         "                                    <a href = \"javascript:;\" class=\"comment\">评论" + result.data.messages[i].message.messageCommentNum + "</a>\n" +
                         "                                    <a href = \"javascript:;\" class=\"praise\" onclick='agree(this)'>点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏" + result.data.messages[i].message.messageCollectNum + "</a>\n" +
                         "                                </div>\n" +
                         "                            </div>";
 
