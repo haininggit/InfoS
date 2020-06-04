@@ -4,9 +4,13 @@
     list-style: none;
     text-decoration: none;
 }
+/*字体设置*/
+/*body{*/
+/*    font: 12px/1.3 Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;*/
+/*}*/
 /*滚动条 start*/
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 2px;
     height: 4px;
     background-color: #fd271d;
 }
@@ -24,7 +28,8 @@
 ::-webkit-scrollbar-thumb:hover {
     border-radius: 3px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    background-color:rgba(7, 170, 247, 1);
+    /*background-color:rgba(7, 170, 247, 1);*/
+    background-color:rgba(0, 0, 0, .2);
 }
 /*body {*/
 /*    width: 100%;*/
@@ -34,36 +39,37 @@
     width: 100%;
     height: 65px;
     background-color: #f6fbfd;
-    border-top: 2px #ff6025 solid;
-    display: block;
-    float: left;
+    /*border-top: 2px #ff6025 solid;*/
+    display: flex;
+    justify-content: space-between;
 }
 
 .mainNav > .logo {
     width: 20%;
     height: 100%;
     float: left;
-    background: url("../images/logo.png");
+    background-image: url("../images/logo.png");
     background-repeat: no-repeat;
 }
 
 .mainNav > .functions {
     width: 60%;
     height: 100%;
-    display: block;
-    float: left;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6A6F79;
 }
 
 .functions > .search{
     display: block;
     width: 40%;
     height: 35px;
-    float: left;
+    /*float: left;*/
     font-style: normal;
     background-color: #f2f2f5;
     line-height: 35px;
-    margin: 15px 0;
+    margin: 15px 0 15px 10px;
     box-sizing: border-box;
     border:none;
     border-radius: 10px;
@@ -74,117 +80,81 @@
     outline: none;
     display-outside:ruby-base-container;
 
-
 }
+.functions > .search:hover{
+    transform: translateY(-2px);
+}
+/*搜索图标*/
 .functions>img{
     width: 20px;
     height: 20px;
     display: inline;
     /*margin: 0px;*/
     position: relative;
-    left: -40px;
-    margin: 24px auto;
+    left: -155px;
+    /*top: 22px;*/
 }
 
-.functions > .search:hover{
-    width: 40%;
-    height: 33px;
-    display: block;
-    float: left;
-    /*margin: auto 0;*/
-    font-style: normal;
-    background-color: #f2f2f5;
-    line-height: 33px;
-    margin: 16px 0;
-    box-sizing: border-box;
-    border-radius: 10px;
-    resize: none;
-    border-right: none;
-}
 .functions > ul {
-    width:auto;
+    width:300px;
     height: 33px;
-    display: block;
-    float: right;
     line-height: 33px;
-    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
     font-family: Arial;
     text-decoration: none;
     font-style: normal;
-    size: 33px;
+    /*size: 33px;*/
     /*overflow: hidden;*/
-    border-radius: 3px;
+    /*border-radius: 3px;*/
 
 
 }
 .functions > ul>li{
     list-style: none;
     /*margin: auto 0;*/
-    text-decoration: none;
     text-align: center;
-    font-style: normal;
-    width:auto;
-    height: 33px;
-    line-height: 33px;
-    size: 33px;
-    display: block;
-    float: right;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-left: 2px white solid;
+    height: 65px;
+    line-height: 65px;
     position: relative;
     left: 0;
     border-radius: 5px;
-
-}
-.functions > ul>li:hover{
-    list-style: none;
-    /*margin: auto 0;*/
-    text-decoration: none;
-    text-align: center;
-    font-style: normal;
-    width: auto;
-    height: 33px;
-    line-height: 33px;
-    size: 33px;
-    display: block;
-    float: right;
-    color: red;
-    float: right;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-left: 2px white solid;
-    position: relative;
-    left: 0px;
-    background-color: #ff6025;
-
-    border-radius: 5px;
-
 }
 .functions > ul>li>a{
     display: block;
     width: 100%;
     height: 100%;
     text-decoration: none;
-    font-style: normal;
-    size: 33px;
-    text-align: center;
-    line-height: 33px;
+    color: #696E78;
+}
+.functions ul li a:hover{
+    color: #FA7D3C;
+    /*background-color: red;*/
 }
 
+
+/*右侧设置框*/
 .mainNav > .setting {
-    width: 20%;
+    width: 15%;
     height: 100%;
-    float: left;
-    display: block;
-    float: left;
-    
-    
+    display: flex;
+    align-items: center;
+    color: #696E78;
+
+}
+.mainNav > .setting:before{
+    content: '|';
+    margin-left: -20px;
+    margin-right: 5px;
+    font-size: 20px;
+    color: #D9D9D9;
 }
 .setting>ul{
     width:100%;
     height:65px;
-    display: block;
+    display: flex;
     float: right;
     line-height: 65px;
     /* margin: 15px 0; */
@@ -204,32 +174,12 @@
     /* height: 35px;    */
     height:65px;
     line-height: 65px;
-    size: 35px;
-    display: block;
-    color: red;
-    float: left;
-    border-left: 2px white solid;
     position: relative;
-    left: 0px;
 
 }
 .setting>ul>li:hover{
-    list-style: none;
-    margin: auto 0;
-    text-decoration: none;
-    text-align: center;
-    font-style: normal;
     width: 50px;
     height: 65px;
-    line-height: 65px;
-    size: 35px;
-    display: block;
-    color: red;
-    float: left;
-    border-left: 2px white solid;
-    position: relative;
-    left: 0px;
-    /* background-color: #ff6025; */
 }
 
 /* 下拉框设置 */
@@ -239,12 +189,15 @@
     /* 通过边框设置小三角的效果,四个方位均可设置 
         width 和 height 的值必须为0
     */
+    z-index: 99;
     width: 0;
     height: 0;
     border: 10px solid #ffffff;
     /* border: 10px solid red; */
     /* border-top: none; */
-    border-color: transparent transparent #ffffff ;
+    /*border-color: transparent transparent #ffffff ;*/
+    border-color: transparent transparent lightgoldenrodyellow ;
+
     /* 设置小三角的定位 */
     position: absolute;
     /* 小三角放在块底部 */
@@ -253,7 +206,7 @@
     left: 0;
     right: 0;
     margin: auto;
-    /* box-shadow: 0 0 5 5 rgba(0, 0, 0, 0.2); */
+    /*box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);*/
 }
 /* 下拉列表出现 */
 .setting-message:hover .drop-down-message,
@@ -307,7 +260,6 @@
 .message-wrapper a{
     display: block;
     width: 100%;
-    display: block;
     color: #333333;
     font-size: 12px;
     text-align: center;
