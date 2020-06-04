@@ -193,9 +193,9 @@ public class UserServiceImpl implements UserService {
     public RetJsonData queryUserId(String userId) {
 
         User user= userMapper.queryUserId(userId);
-        user.setUserPassword("");
-        user.setUserRealname("");
-        user.setUserEmail("");
+        user.setUserPassword(null);
+        user.setUserRealname(null);
+        user.setUserEmail(null);
         return new RetJsonData(true,user,null);
     }
 }

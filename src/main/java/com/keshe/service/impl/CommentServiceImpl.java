@@ -1,5 +1,7 @@
 package com.keshe.service.impl;
 
+import com.keshe.entity.Comment;
+import com.keshe.entity.RetJsonData;
 import com.keshe.mapper.CommentMapper;
 import com.keshe.service.CommentService;
 import org.springframework.stereotype.Service;
@@ -18,4 +20,18 @@ import javax.annotation.Resource;
 public class CommentServiceImpl implements CommentService {
     @Resource
     private CommentMapper commentMapper;
+
+    @Override
+    public RetJsonData addComment(Comment comment) {
+        if (commentMapper.addComment(comment) > 0){
+            Comment comment1 = commentMapper.getComment(comment);
+            comment1.setCommentId("comment"+comment1.getCommentId());
+            if (comment1 != null){
+                return new RetJsonData(true, comment1, null);
+            }
+            return new RetJsonData(false, "查询错误");
+        }
+        return new RetJsonData(false, "评论失败");
+    }
+
 }

@@ -402,6 +402,10 @@ Github:https://github.com/fozero
 博客：https://www.cnblogs.com/fozero
 -------------------------------------
 */
+/*.uploadvideo{*/
+/*    display: none;*/
+/*}*/
+
 .upload-content-img{
     display: none;
     width: 100%;
@@ -553,4 +557,7 @@ input:checked+label:after{
     height: 1px;
     background: #ccc;
     opacity: 0.2;
+}
+.files{
+    display: none;
 }

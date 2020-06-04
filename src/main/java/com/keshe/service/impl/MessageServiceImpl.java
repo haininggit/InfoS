@@ -101,22 +101,22 @@ public class MessageServiceImpl implements MessageService {
         List<Img> imgs = new ArrayList<>();
         if (messageMapper.saveMessage(message) > 0 && userMapper.icrUserMsgCount(userId) > 0){
             if (files.length > 0){
-                String messageid = messageMapper.getMessageId(userId, messageInfo);
+                String messageId = messageMapper.getMessageId(userId, messageInfo);
                 if (message != null){
                     for (MultipartFile file : files) {    //遍历文件
                         //上传文件并返回url
                         String url = qiniuUpload.updateFile(file, UUID.randomUUID().toString()+".jpg");
                         //存储图片
-                        Img img = pack.packImg(messageid, url);
+                        Img img = pack.packImg(messageId, url);
                         if (imgMapper.saveImg(img) < 0){
                             return new RetJsonData(false, "存储图片错误");
                         }
                     }
-                    return new RetJsonData(true, "发表成功");
+                    return new RetJsonData(true, "发表成功", null);
                 }
                 return new RetJsonData(false, "动态查找失败");
             }
-            return new RetJsonData(true, "发表成功");
+            return new RetJsonData(true, "发表成功", null);
         }
         return new RetJsonData(false, "动态存储失败");
     }
@@ -133,13 +133,13 @@ public class MessageServiceImpl implements MessageService {
                         //存储图片
                         Video video = pack.packVideo(messageid, url);
                         if (videoMapper.saveVideo(video) > 0){
-                            return new RetJsonData(true, "发表成功");
+                            return new RetJsonData(true, "发表成功", null);
                         }
                         return new RetJsonData(false, "视频存储失败");
                     }
                     return new RetJsonData(true, "动态查找失败");
                 }
-                return new RetJsonData(false, "发表成功");
+                return new RetJsonData(true, "发表成功", null);
             }
             return new RetJsonData(true, "动态存储失败");
     }
@@ -158,6 +158,7 @@ public class MessageServiceImpl implements MessageService {
             for (int i = 0; i < comments.size(); i++){
                 CommentAndName commentAndName = new CommentAndName();
                 String userName = userMapper.userByUserId(comments.get(i).getUserId()).getUserName();
+                comments.get(i).setCommentId("comment"+comments.get(i).getCommentId());
                 commentAndName.setComment(comments.get(i));
                 commentAndName.setUserName(userName);
                 list.add(commentAndName);

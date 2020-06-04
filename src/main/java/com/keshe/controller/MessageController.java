@@ -2,6 +2,7 @@ package com.keshe.controller;
 
 import com.keshe.entity.RetJsonData;
 import com.keshe.service.MessageService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,6 +59,7 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
+        System.out.println(messageInfo);
         if (messageInfo != null){
             return messageService.saveMessageOnImg(files, userId, messageInfo, lable);
         }
@@ -78,14 +80,18 @@ public class MessageController {
      * @return
      * @throws Exception
      */
-    @RequestMapping("/saveMessageOnVideo")
+    @PostMapping("/saveMessageOnVideo")
     @ResponseBody
     public RetJsonData saveMessageOnVideo(MultipartFile file, HttpServletRequest request) throws Exception {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
+        System.out.println (file);
         if (messageInfo != null){
-            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+            RetJsonData retJsonData = messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+            System.out.println (retJsonData.toString ());
+//            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+        return retJsonData;
         }
         return new RetJsonData(false, "信息为空");
 
