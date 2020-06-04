@@ -140,4 +140,40 @@ public class Pack {
         return video;
     }
 
+
+    /**
+     * 打包主评论类
+     * @param userId
+     * @param messageId
+     * @param commentInfo
+     * @return
+     */
+    public Comment packComment(String userId, String messageId, String commentInfo){
+        Comment comment = new Comment();
+        comment.setUserId(userId);
+        comment.setMessageId(messageId);
+        comment.setCommentTime(new Date());
+        comment.setCommentInfo(commentInfo);
+        return comment;
+    }
+
+
+    /**
+     * 回复类进行打包
+     * @param userId
+     * @param userById
+     * @param parentId
+     * @param replyInfo
+     * @return
+     */
+    public Reply packReply(String userId, String userById, String parentId, String replyInfo){
+        Reply reply = new Reply();
+        reply.setReplyUserId(userId);
+        reply.setReplyByUserId(userById);
+        reply.setCommentParent(parentId);
+        reply.setReplyInfo(replyInfo);
+        reply.setReplyTime(new Date());
+        return reply;
+    }
+
 }
