@@ -2,7 +2,7 @@
   const l = 42, // 滑块边长
     r = 10, // 滑块半径
     w = 350, // canvas宽度
-    h = 50, // canvas高度
+    h = 80, // canvas高度
     PI = Math.PI
   const L = l + r * 2 // 滑块实际边长
 
