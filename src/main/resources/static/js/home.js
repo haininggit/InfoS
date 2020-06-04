@@ -6,8 +6,10 @@ var vidorpic = true
  * socket
  * @type {jQuery|*}
  */
-var wsUrl="ws:"+window.location.host+"//websocket/"+comId
+
 comId = $.cookie("userId");
+var wsUrl="ws:"+window.location.host+"//websocket/"+comId
+
 socket = null;
 
 // 初始化websocket
