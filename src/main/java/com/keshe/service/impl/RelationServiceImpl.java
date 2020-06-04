@@ -43,7 +43,7 @@ public class RelationServiceImpl implements RelationService {
 
     @Override
     public RetJsonData delRelation(String userId, String userById) {
-        if (relationMapper.delRelation(userId, userById) > 0 && userMapper.redUserFans(userId) > 0){
+        if (relationMapper.delRelation(userId, userById) > 0 && userMapper.redUserFans(userById) > 0){
             return new RetJsonData(true,"取关成功", null);
         }else{
             return new RetJsonData(false,"取关失败");

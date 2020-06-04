@@ -10,6 +10,8 @@ import com.keshe.service.CommentService;
 import com.keshe.service.ReplyService;
 import com.keshe.tools.Pack;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -74,6 +76,7 @@ public class ReplyServiceImpl implements ReplyService {
                 if (save_flag>0){
                     System.out.println("reply1:"+reply1);
                     Reply reply2 = replyMapper.getReply(reply1);
+                    System.out.println(reply2);
                     reply2.setReplyId("reply"+reply2.getReplyId());
                     if (reply2 != null){
                         return new RetJsonData(true, reply2, null);
