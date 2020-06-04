@@ -6,11 +6,12 @@ var vidorpic = true
  * socket
  * @type {jQuery|*}
  */
+var wsUrl="ws:"+window.location.host+"//websocket/"+comId
 comId = $.cookie("userId");
 socket = null;
 
 // 初始化websocket
-socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+socket = new WebSocket(wsUrl);
 socket.onopen = function () {
     console.log("hkjllllllllllllllllllll");
 }
@@ -25,6 +26,7 @@ socket.onmessage = function (data) {
     console.log("你收到了来自" + record.comUserId + "的消息");
 }
 ////////////////////////////////////////////////////
+
 $(function () {
     // 鼠标经过显示删除按钮
     $('.content-img-list').on('mouseover', '.content-img-list-item', function () {

@@ -3,16 +3,16 @@ let pagenum = 1;
 
 window.onload = function () {
 
-
     /**
      * socket
      * @type {jQuery|*}
      */
+    var wsUrl="ws:"+window.location.host+"//websocket/"+comId
     comId = $.cookie("userId");
     socket = null;
 
-// 初始化websocket
-    socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+    // 初始化websocket
+    socket = new WebSocket(wsUrl);
     socket.onopen = function () {
         console.log("hkjllllllllllllllllllll");
     }
@@ -27,6 +27,7 @@ window.onload = function () {
         console.log("你收到了来自" + record.comUserId + "的消息");
     }
 ////////////////////////////////////////////////////
+
     page(pagenum);
 };
 

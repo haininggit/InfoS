@@ -169,11 +169,15 @@
 <script src="js/jquery1111.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script>
+
+
     let comId = $.cookie("userId");
     let socket = null;
     var userId=null;
+    var wsUrl="ws:"+window.location.host+"//websocket/"+comId
     onload = function () {
-        socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+        // socket = new WebSocket("ws:localhost:80//websocket/" + comId);
+        socket = new WebSocket(wsUrl);
         socket.onopen = function () {
             console.log("454546")
         }

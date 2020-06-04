@@ -18,7 +18,7 @@
         <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt=""
                                                                           onclick="search()">
         <ul>
-            <li><a href="person02.html">我要写走测试</a></li>
+            <li><a href="person.html" id="person"></a></li>
             <li><a href="home.html">首页</a></li>
             <li><a href="video.html">视频</a></li>
             <li><a href="mynote.html">关注</a></li>
@@ -191,6 +191,33 @@
     var userName = $.cookie("userName");
     onload = function () {
         // console.log("hello,world")
+
+        /**
+         * socket
+         * @type {jQuery|*}
+         */
+        var wsUrl="ws:"+window.location.host+"//websocket/"+comId
+        comId = $.cookie("userId");
+        socket = null;
+
+        // 初始化websocket
+        socket = new WebSocket(wsUrl);
+        socket.onopen = function () {
+            console.log("hkjllllllllllllllllllll");
+        }
+        socket.onmessage = function (data) {
+            var mesnum = document.getElementById('notices').innerText;
+            mesnum = parseInt(mesnum) + 1;
+            document.getElementById('notices').innerText = mesnum;
+            document.getElementById('notices').style.display = 'block'
+            console.log("data:" + data);
+            var record = JSON.parse(data.data);
+
+            console.log("你收到了来自" + record.comUserId + "的消息");
+        }
+////////////////////////////////////////////////////
+
+
 
         // console.log(messageId)
         $.ajax({
@@ -415,6 +442,19 @@
 
     }
 
+</script>
+
+<script>
+
+    // var modify = document.getElementsByClassName("modify")[0];
+    // modify.onclick = function(){
+    //     // alert("test");
+    //     var modifyWrapper = document.getElementsByClassName("modify-wrapper")[0];
+    //     modifyWrapper.style.display = "block";
+    //
+    // };
+
+    $("#person").innerText=$.cookie("userName");
 </script>
 </body>
 </html>
