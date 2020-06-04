@@ -4,41 +4,210 @@
     list-style: none;
     text-decoration: none;
 }
-#pn{width: 550px; height: auto; background: #fff; margin: 0 auto; padding: 20px;}
-.list0{padding: 20px 0; position: relative; border-top: 1px solid #eee;}
 
-.close{width: 20px; height: 20px; position: absolute; top: 0; right: 0; color: #696e78; font-size: 14px; text-align: center; line-height: 20px;}
-.close:hover{color: #eb7350;}
-.content{width: 450px; line-height: 20px; font-size: 14px; margin-left: 30px;background-color:whitesmoke;text-align: left}
-.name{color: #eb7350; }
-.pic{margin: 5px 0;}
-.good:after{clear:both;content:'';display:block;width:0;height:0;visibility:hidden;}
-.good{*zoom:1;}
-.date{float:left; color: #808080;}
-.good a{float: right; color: #808080;}
-.people{background: #F7F7F7; height: 28px; line-height: 28px; padding-left: 10px; margin: 5px 0;}
-.comment:after{clear:both;content:'';display:block;width:0;height:0;visibility:hidden;}
-.comment{* zoom:1; padding: 10px 0; border-top: 1px solid #eee;}
+#pn {
+    width: 550px;
+    height: auto;
+    background: #fff;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-.comment-left{width: 30px; float: left; display: inline; margin-right: 10px;}
-.comment-left img{width: 30px; height: 30px;}
-.comment-right{float: left; width: 410px;}
-.comment-text{float: left;line-height: 18px;}
-.comment-text span{float: left;color:#eb7350;}
-.comment-date{font-size: 12px; line-height: 18px; color: grey; position: relative;}
-.comment-zan{position: absolute; right: 40px; bottom: 0; color: #808080;}
-.comment-dele{position: absolute; right: 0; bottom: 0; color: #808080;}
-.hf:after{clear:both;content:'';display:block;width:0;height:0;visibility:hidden;}
-.hf{*zoom:1;}
-.hf-text{ float: left; border: 1px solid #eee; display: block; height: 15px; width: 438px; padding: 5px; resize: none; color: black; font-size:12px;}
-.hf-on .hf-text{height: 60px; color: #333; border:1px solid #ff8140;}
-.hf-btn{float: right; width: 65px; height: 26px; background:#ff8140; color: #fff; font-size: 12px; display: none;}
-.hf-btn-on{background: #ff8140; color: #fff; }
-.hf-nub{float: right; padding: 3px 5px; color: #666; display: none;}
-.hf-on .hf-btn{display: inline;}
-.hf-on .hf-nub{display: inline;}
+.list0 {
+    padding: 20px 0;
+    position: relative;
+    border-top: 1px solid #eee;
+}
 
-.content>.main{
+.close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #696e78;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.close:hover {
+    color: #eb7350;
+}
+
+.content {
+    width: 450px;
+    line-height: 20px;
+    font-size: 14px;
+    margin-left: 30px;
+    background-color: whitesmoke;
+    text-align: left
+}
+
+.name {
+    color: #eb7350;
+}
+
+.pic {
+    margin: 5px 0;
+}
+
+.good:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.good {
+    *zoom: 1;
+}
+
+.date {
+    float: left;
+    color: #808080;
+}
+
+.good a {
+    float: right;
+    color: #808080;
+}
+
+.people {
+    background: #F7F7F7;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+
+.comment:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.comment {
+    *zoom: 1;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.comment-left {
+    width: 30px;
+    float: left;
+    display: inline;
+    margin-right: 10px;
+}
+
+.comment-left img {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-right {
+    float: left;
+    width: 410px;
+}
+
+.comment-text {
+    float: left;
+    line-height: 18px;
+}
+
+.comment-text span {
+    float: left;
+    color: #eb7350;
+}
+
+.comment-date {
+    font-size: 12px;
+    line-height: 18px;
+    color: grey;
+    position: relative;
+}
+
+.comment-zan {
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+    color: #808080;
+}
+
+.comment-dele {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #808080;
+}
+
+.hf:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.hf {
+    *zoom: 1;
+}
+
+.hf-text {
+    float: left;
+    border: 1px solid #eee;
+    display: block;
+    height: 15px;
+    width: 438px;
+    padding: 5px;
+    resize: none;
+    color: black;
+    font-size: 12px;
+}
+
+.hf-on .hf-text {
+    height: 60px;
+    color: #333;
+    border: 1px solid #ff8140;
+}
+
+.hf-btn {
+    float: right;
+    width: 65px;
+    height: 26px;
+    background: #ff8140;
+    color: #fff;
+    font-size: 12px;
+    display: none;
+}
+
+.hf-btn-on {
+    background: #ff8140;
+    color: #fff;
+}
+
+.hf-nub {
+    float: right;
+    padding: 3px 5px;
+    color: #666;
+    display: none;
+}
+
+.hf-on .hf-btn {
+    display: inline;
+}
+
+.hf-on .hf-nub {
+    display: inline;
+}
+
+.content > .main {
     width: 61%;
     height: auto;
     display: block;
@@ -48,46 +217,49 @@
     /*opacity: 0.5;*/
 }
 
-.content>.foot{
+.content > .foot {
     width: 100%;
-    height:100px;
+    height: 100px;
     /*display: block;*/
     padding-top: 35px;
     margin: 0px auto;
     /*position:absolute;*/
-    bottom:0;
+    bottom: 0;
     overflow: auto;
     background-color: white;
     text-align: center;
     /*opacity: 0.5;*/
 }
-.main>.thing{
+
+.main > .thing {
 
     display: block;
     width: 65%;
     height: auto;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
     font-style: normal;
     font-weight: inherit;
     float: left;
 
 }
-.thing>.message{
+
+.thing > .message {
     float: left;
     /*display: block;*/
-    width:100%;
+    width: 100%;
     height: auto;
     margin-left: 0%;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
 
 
 }
-.thing>#com{
+
+.thing > #com {
     border: 1px solid black;
     text-align: center;
-    width:99%;
+    width: 99%;
     height: auto;
     display: block;
     margin: 0px auto;
@@ -95,10 +267,11 @@
     /*background-color: red;*/
     /*opacity: 0.5;*/
 }
-.thing>.comment{
+
+.thing > .comment {
     border: 1px solid black;
     text-align: center;
-    width:99%;
+    width: 99%;
     height: auto;
     display: block;
     margin: 0px auto;
@@ -106,33 +279,37 @@
     /*background-color: red;*/
     /*opacity: 0.5;*/
 }
-.message>.head{
+
+.message > .head {
     float: left;
     /*display: block;*/
-    width:15%;
+    width: 15%;
     height: auto;
     margin-left: 0%;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
 
 
 }
+
 /*内容整体*/
-.message>.msg{
+.message > .msg {
     display: block;
     width: 75%;
     height: auto;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
 
     float: left;
 }
+
 /*昵称 关注*/
-.msg>.name{
+.msg > .name {
     width: 100%;
     height: 60px;
     background-color: white;
 }
+
 /*.name li{*/
 /*display: inline;*/
 /*!*background-color: white;*!*/
@@ -142,18 +319,18 @@
 /*width: 100px;*/
 
 /*}*/
-#but1{
+#but1 {
     margin-left: 1%;
-    margin-top:4%;
+    margin-top: 4%;
     float: left;
     font-size: 20px;
     font-weight: bold;
     background-color: white;
 }
 
-#but2{
+#but2 {
     margin-top: 4%;
-    margin-right:5%;
+    margin-right: 5%;
     float: right;
     padding: 5px;
     font-size: 15px;
@@ -163,10 +340,11 @@
 
 
 }
-#but3{
+
+#but3 {
     border: 1px solid black;
     /*border-style: dotted;*/
-    border-radius:30px;
+    border-radius: 30px;
     background-color: #58cfff;
     line-height: 40px;
     text-align: center;
@@ -178,28 +356,32 @@
     font-weight: bolder;
 
 }
-.name a:hover{
+
+.name a:hover {
     background-color: #ff6025;
     color: #ff6025;
     cursor: pointer;
 }
+
 /*内容信息*/
-.msg>.sub{
+.msg > .sub {
     width: 100%;
     height: auto;
     background-color: whitesmoke;
 }
-.thing>.butt{
+
+.thing > .butt {
     display: block;
-    width:100%;
+    width: 100%;
     height: auto;
     margin: 0px auto;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
 
     /*float: left;*/
 }
-.butt li{
+
+.butt li {
     display: inline;
     background-color: white;
     line-height: 80px;
@@ -209,7 +391,7 @@
 
 }
 
-.main>.self{
+.main > .self {
     /*text-align: center;*/
     padding-top: 3%;
     padding-bottom: 3%;
@@ -218,14 +400,16 @@
     width: 28%;
     height: auto;
     margin-left: 2%;
-    background-color:white;
+    background-color: white;
     /*position:relative;*/
     line-height: 200%;
     float: left;
 }
+
 body {
     overflow: auto;
 }
+
 .mainNav {
     width: 100%;
     height: 65px;
@@ -251,7 +435,7 @@ body {
 
 }
 
-.functions > .search{
+.functions > .search {
     display: block;
     width: 40%;
     height: 33px;
@@ -261,7 +445,7 @@ body {
     line-height: 33px;
     margin: 16px 0;
     box-sizing: border-box;
-    border:none;
+    border: none;
     border-radius: 10px;
     resize: none;
     border: none;
@@ -270,7 +454,8 @@ body {
 
 
 }
-.functions>img{
+
+.functions > img {
     width: 30px;
     height: 30px;
     display: inline;
@@ -281,7 +466,7 @@ body {
     margin: 19px 0;
 }
 
-.functions > .search:hover{
+.functions > .search:hover {
     width: 40%;
     height: 33px;
     display: block;
@@ -298,8 +483,9 @@ body {
 
 
 }
+
 .functions > ul {
-    width:auto;
+    width: auto;
     height: 33px;
     display: block;
     float: right;
@@ -314,13 +500,14 @@ body {
 
 
 }
-.functions > ul>li{
+
+.functions > ul > li {
     list-style: none;
     margin: auto 0;
     text-decoration: none;
     text-align: center;
     font-style: normal;
-    width:auto;
+    width: auto;
     height: 33px;
     line-height: 33px;
     size: 33px;
@@ -334,7 +521,8 @@ body {
     border-radius: 5px;
 
 }
-.functions > ul>li:hover{
+
+.functions > ul > li:hover {
     list-style: none;
     margin: auto 0;
     text-decoration: none;
@@ -358,7 +546,8 @@ body {
     border-radius: 5px;
 
 }
-.functions > ul>li>a{
+
+.functions > ul > li > a {
     display: block;
     width: 100%;
     height: 100%;
@@ -378,9 +567,10 @@ body {
 
 
 }
-.setting>ul{
-    width:100%;
-    height:65px;
+
+.setting > ul {
+    width: 100%;
+    height: 65px;
     display: block;
     float: right;
     line-height: 65px;
@@ -391,7 +581,8 @@ body {
     size: 33px;
     /* overflow: hidden; */
 }
-.setting>ul>li{
+
+.setting > ul > li {
     list-style: none;
     margin: auto 0;
     text-decoration: none;
@@ -399,7 +590,7 @@ body {
     font-style: normal;
     width: 50px;
     /* height: 35px;    */
-    height:65px;
+    height: 65px;
     line-height: 65px;
     size: 35px;
     display: block;
@@ -410,7 +601,8 @@ body {
     left: 0px;
 
 }
-.setting>ul>li:hover{
+
+.setting > ul > li:hover {
     list-style: none;
     margin: auto 0;
     text-decoration: none;
@@ -431,7 +623,7 @@ body {
 
 /* 下拉框设置 */
 .setting-message:hover::after,
-.message-setting:hover::after{
+.message-setting:hover::after {
     content: '';
     /* 通过边框设置小三角的效果,四个方位均可设置
         width 和 height 的值必须为0
@@ -441,7 +633,7 @@ body {
     border: 10px solid #ffffff;
     /* border: 10px solid red; */
     /* border-top: none; */
-    border-color: transparent transparent #ffffff ;
+    border-color: transparent transparent #ffffff;
     /* 设置小三角的定位 */
     position: absolute;
     /* 小三角放在块底部 */
@@ -452,13 +644,15 @@ body {
     margin: auto;
     /* box-shadow: 0 0 5 5 rgba(0, 0, 0, 0.2); */
 }
+
 /* 下拉列表出现 */
 .setting-message:hover .drop-down-message,
-.message-setting:hover .drop-down-setting{
+.message-setting:hover .drop-down-setting {
     display: block;
 }
+
 /* 下拉列表 */
-.setting-message .drop-down-message{
+.setting-message .drop-down-message {
     width: 150px;
     height: 220px;
     background-color: red;
@@ -470,7 +664,8 @@ body {
     border-top: none;
     display: none;
 }
-.setting a{
+
+.setting a {
     display: block;
     width: 140px;
     height: 30px;
@@ -480,19 +675,23 @@ body {
     color: #333333;
     background-color: #FFFFFF;
 }
-.setting-message a:hover{
+
+.setting-message a:hover {
     color: #EB7350;;
 }
-.setting-message .drop-down-message .last-mes{
+
+.setting-message .drop-down-message .last-mes {
     border-top: 1px solid #D9D9D9;
 }
-.setting-message .drop-down-message a{
+
+.setting-message .drop-down-message a {
     text-align: center;
 }
+
 /*
     消息的下拉列表
 */
-.message-wrapper .drop-down-setting{
+.message-wrapper .drop-down-setting {
     width: 100px;
     height: 268px;
     /* border: 1px solid black; */
@@ -501,7 +700,8 @@ body {
     box-shadow: 1px -1px 10px rgba(0, 0, 0, 0.2);
     display: none;
 }
-.message-wrapper a{
+
+.message-wrapper a {
     display: block;
     width: 100%;
     display: block;
@@ -509,53 +709,58 @@ body {
     font-size: 12px;
     text-align: center;
 }
-.message-wrapper a:hover{
+
+.message-wrapper a:hover {
     color: #EB7350;
 }
-.drop-down-setting .out{
+
+.drop-down-setting .out {
     border-top: 1px solid #D9D9D9;
     /* background-color: red; */
 }
-body>.content{
-    width:100%;
-    height:655px;
+
+body > .content {
+    width: 100%;
+    height: 655px;
     margin: 0 auto;
     /*background: green;*/
     overflow: auto;
     background-image: url("../images/newBg.jpg");
     background-size: 100%;
-    background-repeat:no-repeat ;
+    background-repeat: no-repeat;
     display: block;
     float: left;
     /*position: relative;*/
     overflow: auto;
 }
 
-a:link{
+a:link {
     /*点之前*/
     color: black;
     /*取消下划线*/
     text-decoration: none;
 }
-a:visited{
+
+a:visited {
     /*点之后 返回此页面*/
     color: black;
 }
-a:hover{
+
+a:hover {
     /*放上去*/
-    color:#122b40;
+    color: #122b40;
 }
-a:active{
+
+a:active {
     /*点之后*/
     color: black;
 }
 
 
-
-.round_icon{
+.round_icon {
     margin-top: 10px;
     width: 70px;
-    height:70px;
+    height: 70px;
     display: flex;
     border-radius: 50%;
     float: right;

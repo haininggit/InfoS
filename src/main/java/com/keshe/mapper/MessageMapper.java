@@ -72,7 +72,7 @@ public interface MessageMapper {
      * @param forward
      * @return
      */
-    @Update({"update message set message_transpondnum=message_transpondNum+1 where message_id=#{messageId},"})
+    @Update({"update message set message_transpondnum=message_transpondnum+1 where message_id=#{messageId}"})
     Integer forWardUpdateTranspondnum(Forward forward);
 
 
