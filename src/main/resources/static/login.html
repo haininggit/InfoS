@@ -139,7 +139,8 @@
                 if(result.success)
                 {
                     $.cookie("userId",result.data.userId);
-                    window.location.href="./person02.html";
+                    $.cookie("userName",userName);
+                    window.location.href="home.html";
                 }
                 else {
                     alert(result.errorMsg);

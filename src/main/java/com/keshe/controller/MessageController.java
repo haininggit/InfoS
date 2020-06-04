@@ -86,8 +86,12 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
+        System.out.println (file);
         if (messageInfo != null){
-            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+            RetJsonData retJsonData = messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+            System.out.println (retJsonData.toString ());
+//            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
+        return retJsonData;
         }
         return new RetJsonData(false, "信息为空");
 

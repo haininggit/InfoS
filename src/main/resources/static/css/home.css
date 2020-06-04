@@ -285,9 +285,9 @@ li .blog-wrapper{
     justify-content: center;
 }
 .blog-img-video img{
-    width: 100%;
-
-
+    width: 200px;
+    height: 175px;
+    margin-left: 20px;
 }
 /*评论转发点赞*/
 .blog-views{
@@ -402,32 +402,28 @@ Github:https://github.com/fozero
 博客：https://www.cnblogs.com/fozero
 -------------------------------------
 */
-/*
--------------------------------------
-文件名：index.css
-说明: 文件上传css
-创建时间：2018/4/14
-作者：fozero
-Github:https://github.com/fozero
-博客：https://www.cnblogs.com/fozero
--------------------------------------
-*/
-.upload-content{
+/*.uploadvideo{*/
+/*    display: none;*/
+/*}*/
+
+.upload-content-img{
+    display: none;
     width: 100%;
     margin: 0 auto;
+    /*height: auto;*/
     font-size: 12px;
     color: #666;
     /*padding: 20px;*/
     background: #fff;
 }
-.upload-content .content-img{
+.content-img{
     width: 100%;
 }
-.upload-content .content-img-list{
+.content-img-list{
     display: inline;
     width: 100%;
 }
-.upload-content .content-img .ico-plus{
+.content-img .ico-plus{
     display: inline-block;
     vertical-align: middle;
     margin-top: -4px;
@@ -436,7 +432,7 @@ Github:https://github.com/fozero
     height: 28px;
     background: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-plus.png') center/28px 28px;
 }
-.upload-content .content-img-list-item{
+.content-img-list-item{
     position: relative;
     display: inline-block;
     width: 165px;
@@ -444,13 +440,13 @@ Github:https://github.com/fozero
     margin-top: 20px;
     margin-left: 7px;
 }
-.upload-content .content-img-list-item:first-child{
+.content-img-list-item:first-child{
     margin-left: 0;
 }
-.upload-content .content-img-list-item .hide{
+.content-img-list-item .hide{
     display: none;
 }
-.upload-content .content-img-list-item .delete-btn{
+.content-img-list-item .delete-btn{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -462,25 +458,25 @@ Github:https://github.com/fozero
     color: #fff;
     cursor: pointer;
 }
-.upload-content .content-img-list-item .ico-delete{
+.content-img-list-item .ico-delete{
     display: inline-block;
     vertical-align: middle;
     width: 12px;
     height: 13px;
     background: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-delete.png') center/12px 13px;
 }
-.upload-content .content-img-list-item img{
+.content-img-list-item img{
     width: 165px;
     height: 96px;
     margin-left: 10px;
 }
-.upload-content .upload-tips{
+ .upload-tips{
     padding-top: 10px;
     text-align: right;
     width: 100%;
 }
 /*图片上传按钮*/
-.upload-content .file {
+.file {
     position: sticky;
     display: block;
     border: 1px dashed #DEDEDE;
@@ -492,11 +488,11 @@ Github:https://github.com/fozero
     height: 96px;
     line-height: 96px;
     margin-left: 10px;
-    /*margin-top: 20px;*/
+    /*margin-top: 10px;*/
 }
-.upload-content .file input {
+.file input {
     position: absolute;
-    font-size: 0px;
+    font-size: 20px;
     right: 0;
     top: 0;
     opacity: 0;
@@ -504,24 +500,64 @@ Github:https://github.com/fozero
     width: 165px;
     height: 96px;
 }
-.upload-content .file:hover {
+.file:hover {
     color: #999999;
 }
 .upload-submit{
     text-align: center;
     margin-top: 50px;
 }
-.upload-submit .btn-submit-upload{
-    display: inline-block;
-    width: 170px;
-    height: 40px;
+
+.link-top {
+    margin-top: 10px;
+    width: 100%;
+    /*height: 2px;*/
+    border-top: solid #ACC0D8 1px;
+}
+.box{
+    width: 100%;
+    height: 50px;
     text-align: center;
-    line-height: 38px;
-    font-size: 14px;
-    box-sizing: border-box;
-    background: #ff8819;
-    color: #fff;
-    border: 1px solid #ff8819;
-    border-radius: 2px;
-    text-decoration: none;
+    background-color: white;
+}
+
+.box>input{
+    display: none;
+}
+
+label{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    line-height: 50px;
+    color: #999;
+}
+label:active{
+    background: #EEEEEE;
+}
+label:after{
+    content: "";/*必须设置*/
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 20px;
+}
+
+input:checked+label:after{
+    background-color: green;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    opacity: 0.2;
+}
+.files{
+    display: none;
 }
