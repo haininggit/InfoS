@@ -72,7 +72,6 @@ public class MessageServiceImpl implements MessageService {
             List<Img> imgs = imgMapper.imgByMessageId(messages.get(i).getMessageId());
             Video video = videoMapper.videoByMessageId(messages.get(i).getMessageId());
             User user1 = userMapper.userByUserId(messages.get(i).getUserId());
-            System.out.println("user:"+user1);
             user1.setUserEmail(null);
             user1.setUserPassword(null);
             user1.setUserRealname(null);

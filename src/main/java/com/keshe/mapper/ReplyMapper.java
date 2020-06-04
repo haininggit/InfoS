@@ -4,6 +4,8 @@ import com.keshe.entity.Reply;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public interface ReplyMapper {
     Integer saveReply(Reply reply);
 
     //查询刚保存的reply
-    @Select("select * from reply where reply_userid=#{replyUserId} and reply_byuserid=#{replyByUserId} and reply_info=#{replyInfo} and commentparent=#{commentParent} and reply_time=#{replyTime}")
+    @Select("select * from reply where reply_userid=#{replyUserId} and reply_byuserid=#{replyByUserId} and reply_info=#{replyInfo} and commentparent=#{commentParent}")
     Reply getReply(Reply reply);
 
     //根据父评论进行查询回复

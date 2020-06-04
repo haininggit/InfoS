@@ -63,8 +63,6 @@ public class ForwardServiceImpl implements ForwardService {
             message.setUserId(forward.getUserId());
             System.out.println("forwardmessage:" + message);
             flag += messageService.saveMessage(message);
-
-
             String messsage_id = message.getMessageId();
             String neMessage_id = messageMapper.getMessageId(forward.getUserId(), messagesInf);
             Video video = videoMapper.videoByMessageId(messsage_id);
