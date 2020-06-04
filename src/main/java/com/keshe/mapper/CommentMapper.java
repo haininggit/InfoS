@@ -23,10 +23,12 @@ public interface CommentMapper {
     Integer addComment(Comment comment);
 
     //查询刚才存储的评论
-    @Select("select * from comment where user_id=#{userId} and message_id=#{messageId} and comment_info=#{commentInfo} and comment_time=#{commentTime}")
+    @Select("select * from comment where user_id=#{userId} and message_id=#{messageId} and comment_info=#{commentInfo}")
     Comment getComment(Comment comment);
 
     //根据commentId查询评论
     @Select("select * from comment where comment_id=#{commentId}")
     Comment commentByCommentId(String commentId);
 }
+
+//2020-06-04 08:19:20

@@ -38,6 +38,9 @@ public class ReplyController {
     @RequestMapping("/saveReply")
     @ResponseBody
     public RetJsonData saveReply(String userId, String parentId, String replyInfo){
+        System.out.println(userId);
+        System.out.println(parentId);
+        System.out.println(replyInfo);
         return replyService.saveReply(userId, parentId, replyInfo);
     }
 

@@ -41,7 +41,9 @@ public class CommentController {
     @RequestMapping("/addComment")
     @ResponseBody
     public RetJsonData addComment(String userId, String messageId, String commentInfo){
+//        System.out.println(userId+messageId+commentInfo);
         Comment comment = packComment.packComment(userId, messageId, commentInfo);
+//        System.out.println(comment);
         return commentService.addComment(comment);
     }
 

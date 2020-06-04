@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     url: jdbc:mysql://127.0.0.1:3306/infos?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
-    password: 19990918
+    password: tcp666
   mvc:
     #日期格式通配符(springMVC)
     date-format: yyyy-MM-dd mm:ss
@@ -13,7 +13,7 @@ spring:
     #日期格式通配符(json)
     date-format: yyyy-MM-dd HH:mm:ss
     #设置时区(东八区)
-    time-zone: GMT+8
+    time-zone: GMT
   servlet:
     multipart:
       max-file-size:  1GB

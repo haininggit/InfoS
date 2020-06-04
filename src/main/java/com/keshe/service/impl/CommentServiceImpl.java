@@ -23,8 +23,11 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public RetJsonData addComment(Comment comment) {
+
+        System.out.println(comment);
         if (commentMapper.addComment(comment) > 0){
             Comment comment1 = commentMapper.getComment(comment);
+            System.out.println("comment1"+comment1);
             comment1.setCommentId("comment"+comment1.getCommentId());
             if (comment1 != null){
                 return new RetJsonData(true, comment1, null);
