@@ -243,7 +243,7 @@ public class UserController {
         if (file != null){
             //上传文件并返回url(文件路径)+file.getOriginalFilename()
             String url = qiniuUpload.updateFileVideo(file, UUID.randomUUID().toString()+"-"+file.getOriginalFilename());
-            System.out.println(url);
+//            System.out.println(url);
             //存储图片
             return userService.updateHeadImg(userId, url);
         }else {
