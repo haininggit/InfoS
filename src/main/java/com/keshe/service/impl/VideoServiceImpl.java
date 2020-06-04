@@ -33,6 +33,7 @@ public class VideoServiceImpl implements VideoService {
     @Resource
     private UserMapper userMapper;
 
+
     @Override
     public RetJsonData videoInfoPage(String type) {
         List<Message> messages = messageMapper.messageByType(type);
@@ -56,5 +57,11 @@ public class VideoServiceImpl implements VideoService {
         }else{
             return new RetJsonData(false,"查询失败");
         }
+    }
+
+
+    @Override
+    public Video videoByMessageId(String messageId) {
+        return null;
     }
 }

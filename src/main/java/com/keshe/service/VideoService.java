@@ -1,6 +1,7 @@
 package com.keshe.service;
 
 import com.keshe.entity.RetJsonData;
+import com.keshe.entity.Video;
 
 
 /**
@@ -19,4 +20,6 @@ public interface VideoService {
      * @return
      */
     RetJsonData videoInfoPage(String type);
+
+    Video videoByMessageId(String messageId);
 }

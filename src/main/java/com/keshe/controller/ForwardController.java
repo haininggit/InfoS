@@ -27,7 +27,6 @@ public class ForwardController {
         Forward forward=new Forward();
         forward.setUserId(userId);
         forward.setMessageId(messageId);
-        System.out.println (forward);
         return forwardService.forward(forward);
     }
 

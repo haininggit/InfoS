@@ -26,4 +26,6 @@ public interface VideoMapper {
     //根据传入messageId的删除video
     @Delete("delete from video where message_id=#{messageId}")
     Integer delVideoByMessageId(String messageId);
+
+
 }

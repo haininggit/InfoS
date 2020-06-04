@@ -1,10 +1,10 @@
 package com.keshe.service.impl;
 
-import com.keshe.entity.Forward;
-import com.keshe.entity.Message;
-import com.keshe.entity.RetJsonData;
-import com.keshe.entity.User;
+import com.keshe.entity.*;
 import com.keshe.mapper.ForwardMapper;
+import com.keshe.mapper.ImgMapper;
+import com.keshe.mapper.MessageMapper;
+import com.keshe.mapper.VideoMapper;
 import com.keshe.service.ForwardService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +28,14 @@ public class ForwardServiceImpl implements ForwardService {
     private MessageServiceImpl messageService;
     @Resource
     private UserServiceImpl userService;
+    @Resource
+    VideoServiceImpl videoService;
+    @Resource
+    VideoMapper videoMapper;
+    @Resource
+    MessageMapper messageMapper;
+    @Resource
+    ImgMapper imgMapper;
 
     public ForwardServiceImpl() {
     }
@@ -38,18 +46,43 @@ public class ForwardServiceImpl implements ForwardService {
 
     @Transactional
     public RetJsonData forward(Forward forward) {
+
+        System.out.println("forward:services");
         String result = "转发失败";
-        if (getForwardOne(forward).size()==0) {
-            int flag = this.forwardMapper.forward(forward);
-            flag += this.messageService.forWardUpdateTranspondnum(forward);
+
+        if (getForwardOne(forward).size() == 0) {
+            int flag = forwardMapper.forward(forward);
+            flag += messageService.forWardUpdateTranspondnum(forward);
             RetJsonData retJsonData = userService.queryUserId(forward.getUserId());
             User user = (User) retJsonData.getData();
             Message message = messageService.findMessageById(forward.getMessageId());
             String messagesInf = message.getMessageInfo();
-            messagesInf = "@转发自:" + user.getUserName() + "\n" + messagesInf;
+            System.out.println("messageuiserId:" + message);
+            messagesInf = user.getUserName() + "@转发自:" + ((User) userService.queryUserId(message.getUserId()).getData()).getUserName() + "\n" + messagesInf;
             message.setMessageInfo(messagesInf);
-            message.setUserId(forward.getForwardId());
+            message.setUserId(forward.getUserId());
+            System.out.println("forwardmessage:" + message);
             flag += messageService.saveMessage(message);
+
+
+            String messsage_id = message.getMessageId();
+            String neMessage_id = messageMapper.getMessageId(forward.getUserId(), messagesInf);
+            Video video = videoMapper.videoByMessageId(messsage_id);
+            System.out.println("messsage_id:"+messsage_id);
+
+            if (video != null) {
+                video.setMessageId(neMessage_id);
+                videoMapper.saveVideo(video);
+            }
+            List<Img> imgs = imgMapper.imgByMessageId(forward.getMessageId());
+            if (imgs.size() > 0) {
+                for(Img img:imgs){
+                    img.setMessageId(neMessage_id);
+                    imgMapper.saveImg(img);
+                }
+            }
+
+
             if (flag == 3) {
                 result = "转发成功";
             }
