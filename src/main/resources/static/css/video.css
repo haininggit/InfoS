@@ -270,6 +270,21 @@ body>.mainNav{
     color: lightslategrey;
 }
 
+#notices{
+    width: 15px;
+    height: 15px;
+    display: block;
+    float: left;
+    background-color: red;
+    color: #f6fbfd;
+    position: relative;
+    top: 10px;
+    right: -86px;
+    font-size: 9px;
+    border-radius: 15px;
+    line-height: 15px;
+}
+
 
 
 
