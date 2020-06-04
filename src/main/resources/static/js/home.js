@@ -295,7 +295,10 @@ function collect(obj) {
         },
         success: function (result) {
                   if (result.success){
-                      alert(result.data)
+                      var text = obj.innerText;
+                      var num = 1 + parseInt(text.match(/\d+/g));
+                      obj.innerHTML = "收藏" + num;
+                      // alert(result.data)
                   }else {
                       alert(result.errorMsg)
                   }
@@ -359,6 +362,8 @@ function agree(obj) {
 function forward(obj) {
     let parentid=obj.parentNode.parentNode.parentNode.id;
     let userId = $.cookie("userId");
+    console.log(parentid);
+    console.log(userId);
     $.ajax({
         type: "POST",
         url: "forward",//改这里
@@ -367,6 +372,7 @@ function forward(obj) {
             messageId:parentid
         },
         success: function (result) {
+            console.log(result);
             if (result.success){
                 history.go(0);
                 alert(result.data)
@@ -463,3 +469,8 @@ $("#collect").click(function () {
     })
 
 })
+
+function readArticle(obj){
+    $.cookie("messageId",obj.parentNode.parentNode.parentNode.id);
+    window.location.href="particulars.html";
+}
