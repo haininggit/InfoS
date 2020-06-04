@@ -82,7 +82,7 @@ $(function () {
 
     //提交请求
     $('#article-send').on('click', function () {
-        var radios = document.getElementsByName("rideo");
+        var radios = document.getElementsByName("radio");
         var lable = 0;
         for (var i = 0; i < radios.length; i++) {
             if (radios[i].checked == true) {
