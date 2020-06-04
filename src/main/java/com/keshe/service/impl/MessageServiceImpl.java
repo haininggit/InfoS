@@ -147,7 +147,13 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public RetJsonData getMessage(String messageId) {
         Map<String, Object> map = new HashMap<>();
+        MessageAndAllInfo messageAndAllInfo = new MessageAndAllInfo();
         Message message = messageMapper.messageByMessageId(messageId);
+        List<Img> imgs = imgMapper.imgByMessageId(messageId);
+        Video video = videoMapper.videoByMessageId(messageId);
+        messageAndAllInfo.setMessage(message);
+        messageAndAllInfo.setVideo(video);
+        messageAndAllInfo.setImgs(imgs);
         User user = userMapper.userByUserId(message.getUserId());
         user.setUserRealname(null);
         user.setUserPassword(null);
@@ -164,7 +170,7 @@ public class MessageServiceImpl implements MessageService {
                 list.add(commentAndName);
             }
             map.put("comments", list);
-            map.put("message", message);
+            map.put("message", messageAndAllInfo);
             map.put("user", user);
             return new RetJsonData(true, map, null);
         }
@@ -178,6 +184,35 @@ public class MessageServiceImpl implements MessageService {
             return new RetJsonData(true, "阅读量增加成功", null);
         }
         return new RetJsonData(false, "阅读量增加失败");
+    }
+
+    @Override
+    public RetJsonData search(String searchInfo) {
+        Map<String, Object> map = new HashMap<>();
+        List<User> users = userMapper.searchBySearchInfo(searchInfo);
+        List<MessageAndAllInfo> messageAndAllInfos = new ArrayList<>();
+//        System.out.println(users);
+        List<Message> messages = messageMapper.messageBySearchInfo(searchInfo);
+        for (int i = 0; i < messages.size(); i++){
+            MessageAndAllInfo messageAndAllInfo1 = new MessageAndAllInfo();
+            List<Img> imgs = imgMapper.imgByMessageId(messages.get(i).getMessageId());
+            Video video = videoMapper.videoByMessageId(messages.get(i).getMessageId());
+            User user1 = userMapper.userByUserId(messages.get(i).getUserId());
+            user1.setUserEmail(null);
+            user1.setUserPassword(null);
+            user1.setUserRealname(null);
+            messageAndAllInfo1.setMessage(messages.get(i));
+            messageAndAllInfo1.setUser(user1);
+            messageAndAllInfo1.setImgs(imgs);
+            messageAndAllInfo1.setVideo(video);
+            messageAndAllInfos.add(messageAndAllInfo1);
+        }
+        map.put("users", users);
+        map.put("messageAndAllInfos", messageAndAllInfos);
+        if (users.size() > 0 || messageAndAllInfos.size() > 0){
+            return new RetJsonData(true, map, null);
+        }
+        return new RetJsonData(false, "查询数据失败");
     }
 
 

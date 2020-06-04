@@ -65,6 +65,10 @@ public interface MessageMapper {
     @Update("update message set message_readnum=message_readnum+1 where message_id=#{messageId}")
     Integer addReadnum(String messageId);
 
+    //根据search内容插查询动态
+    @Select("select * from message where message_info like CONCAT('%', #{searchInfo}, '%')")
+    List<Message> messageBySearchInfo(String searchInfo);
+
 
 
     /**
@@ -72,7 +76,7 @@ public interface MessageMapper {
      * @param forward
      * @return
      */
-    @Update({"update message set message_transpondnum=message_transpondNum+1 where message_id=#{messageId},"})
+    @Update({"update message set message_transpondnum=message_transpondnum+1 where message_id=#{messageId}"})
     Integer forWardUpdateTranspondnum(Forward forward);
 
 

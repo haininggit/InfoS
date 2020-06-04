@@ -68,4 +68,8 @@ public interface UserMapper {
     //取关减少说说数
     @Update("update user set user_msgcount = user_msgcount-1 where user_id=#{userId}")
     Integer redUserMsgCount(String userId);
+
+    //根据search内容插查询用户
+    @Select("select * from user where user_name like CONCAT('%', #{searchInfo}, '%')")
+    List<User> searchBySearchInfo(String searchInfo);
 }

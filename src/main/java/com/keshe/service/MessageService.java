@@ -69,6 +69,14 @@ public interface MessageService {
     RetJsonData addMessageReadNum(String messageId);
 
 
+    /**
+     * 根据传入的信息进行查找（搜索功能）
+     * @param searchInfo
+     * @return
+     */
+    RetJsonData search(String searchInfo);
+
+
 
     Integer forWardUpdateTranspondnum(Forward forward);
 
