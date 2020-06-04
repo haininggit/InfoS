@@ -17,7 +17,7 @@
     <div class="functions">
         <textarea class="search" placeholder="大家正在搜:真相奶茶" id="search"></textarea><img src="images/search.png" alt="" onclick="search()">
         <ul>
-            <li><a href="person02.html">我要写走测试</a></li>
+            <li><a href="person.html">我要写走测试</a></li>
             <li><a href="home.html">首页</a></li>
             <li><a href="video.html">视频</a></li>
             <li><a href="mynote.html">关注</a></li>
@@ -89,7 +89,7 @@
                 <div class="toolbar">
                     <ul>
                         <li><i class="fas fa-images" id="pic"></i></li>
-                        <li><i class="fas fa-photo-video" id="vid"></i></li>
+                        <li><i class="fas fa-video" id="vid"></i></li>
                         <li><i class="fas fa-smile"></i></li>
                         <li><i class="fas fa-eye"></i></li>
                     </ul>
@@ -99,23 +99,30 @@
                     </div>
                 </div>
             </div>
+            <!-- 上传图片功能 -->
             <div class="upload-content-img">
                 <div class="content-img">
                     <ul class="content-img-list">
-                        <!-- <li class="constent-img-list-item"><img src="https://www.baidu.com/img/bd_logo1.png" alt=""><a class="delete-btn"><i class="ico-delete"></i></a></li> -->
+                        <!-- <li class="constent-img-list-item"><img src="https://www.baidu.com/img/bd_logo1.png" alt=""><a class="delete-btn">删除<i class="ico-delete"></i></a></li> -->
                     </ul>
                     <div class="file">
-                        <i class="ico-plus"></i>上传图片
+                        <i class="fas fa-plus"></i><span id="up-pic">上传图片</span>
                         <form action="" enctype="multipart/form-data" name="file" id="" method="post">
-                        <input type="file" name="file" accept="image/*" id="upload" >
+                            <input type="file" name="file" accept="image/*" id="upload" title="最多只能上传四张图片">
                         </form>
                     </div>
                 </div>
-
             </div>
-            <form action="" name="uploadvid" enctype="multipart/form-data" id="uploadvid" method="post">
-                <input type="file" accept="video/*" id="files" class="files" />
-            </form>
+            <div class="video-upload-wrapper">
+                <div class="video-upload">
+                    <div class="videos">
+                        <i class="fas fa-plus"></i><span id="up-video">上传视频</span>
+                        <form action="" name="uploadvid" enctype="multipart/form-data" id="uploadvid" method="post" title="只能上传一个视频">
+                            <input type="file" accept="video/*" id="files" class="files" />
+                        </form>
+                    </div>
+                </div>
+            </div>
             <ul id="seclctlable" class="seclctlable">
 
             </ul>
@@ -160,4 +167,21 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/home.js"></script>
+<script>
+    var videoBtn = document.getElementsByClassName("fa-video")[0];
+    var imagesBtn = document.getElementsByClassName("fa-images")[0];
+    var uploadImg = document.getElementsByClassName("upload-content-img")[0];
+    var videoUpload = document.getElementsByClassName("video-upload-wrapper")[0];
+
+    videoBtn.onclick = function(){
+        uploadImg.style.display = "none";
+        videoUpload.style.display = "block";
+    };
+
+    imagesBtn.onclick = function(){
+        videoUpload.style.display = "none";
+        uploadImg.style.display = "block";
+
+    };
+</script>
 </html>

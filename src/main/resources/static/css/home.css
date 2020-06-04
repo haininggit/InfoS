@@ -157,6 +157,8 @@ body .mainNav{
     font-size: 18px;
     color: #69C5F9;
 }
+/*上传视频按钮*/
+
 /*发送按钮和分类按钮*/
 .article-send-wrapper button{
     width: 50px;
@@ -397,20 +399,7 @@ li .blog-wrapper{
     font-size: 12px;
 }
 
-/*
--------------------------------------
-文件名：index.css
-说明: 文件上传css
-创建时间：2018/4/14
-作者：fozero
-Github:https://github.com/fozero
-博客：https://www.cnblogs.com/fozero
--------------------------------------
-*/
-/*.uploadvideo{*/
-/*    display: none;*/
-/*}*/
-
+/*上传图片功能*/
 .upload-content-img{
     display: none;
     width: 100%;
@@ -422,31 +411,34 @@ Github:https://github.com/fozero
     background: #fff;
 }
 .content-img{
-    width: 100%;
+    width: 96%;
+    height: auto;
+    padding: 10px;
 }
 .content-img-list{
-    display: inline;
+    /*display: inline;*/
     width: 100%;
-}
-.content-img .ico-plus{
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: -4px;
-    margin-left: 2px;
-    width: 28px;
-    height: 28px;
-    background: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-plus.png') center/28px 28px;
+    display: flex;
+    flex-wrap: wrap;
 }
 .content-img-list-item{
     position: relative;
     display: inline-block;
-    width: 165px;
-    height: 96px;
-    margin-top: 20px;
+    /*width: 165px;*/
+    /*height: 96px;*/
+    width: 240px;
+    height: 150px;
+    /*margin-top: 20px;*/
     margin-left: 7px;
+    margin-bottom: 5px;
 }
-.content-img-list-item:first-child{
+.content-img-list-item:first-child,
+.content-img-list-item:nth-child(3){
     margin-left: 0;
+}
+.content-img-list-item:nth-child(4),
+.content-img-list-item:nth-child(3){
+    margin-top: 10px;
 }
 .content-img-list-item .hide{
     display: none;
@@ -457,11 +449,14 @@ Github:https://github.com/fozero
     bottom: 0;
     text-align: center;
     width: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.1);
     height: 28px;
     line-height: 28px;
     color: #fff;
     cursor: pointer;
+}
+.delete-btn:after{
+    content: '删除';
 }
 .content-img-list-item .ico-delete{
     display: inline-block;
@@ -471,9 +466,11 @@ Github:https://github.com/fozero
     background: url('https://caiyunupload.b0.upaiyun.com/newweb/imgs/icon-delete.png') center/12px 13px;
 }
 .content-img-list-item img{
-    width: 165px;
-    height: 96px;
-    margin-left: 10px;
+    /*width: 165px;*/
+    /*height: 96px;*/
+    width: 100%;
+    height: 100%;
+    /*margin-left: 10px;*/
 }
  .upload-tips{
     padding-top: 10px;
@@ -489,11 +486,18 @@ Github:https://github.com/fozero
     color: #999999;
     text-decoration: none;
     text-indent: 0;
+    text-align: center;
+    vertical-align: baseline;
     width: 165px;
     height: 96px;
     line-height: 96px;
     margin-left: 10px;
     /*margin-top: 10px;*/
+    font-size: 14px;
+}
+.file i{
+    color: #EB7350;
+    margin-right: 5px;
 }
 .file input {
     position: absolute;
@@ -508,6 +512,63 @@ Github:https://github.com/fozero
 .file:hover {
     color: #999999;
 }
+
+/*上传视频功能*/
+.video-upload-wrapper{
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    /*height: 98px;*/
+    height: auto;
+    font-size: 12px;
+    color: #666;
+    /*padding: 20px;*/
+    background: #fff;
+}
+.video-upload{
+    width: 96%;
+    height: 98px;
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+/*图片上传按钮*/
+.videos {
+    position: sticky;
+    display: block;
+    border: 1px dashed #DEDEDE;
+    border-radius: 4px;
+    color: #999999;
+    text-decoration: none;
+    text-indent: 0;
+    text-align: center;
+    vertical-align: baseline;
+    width: 165px;
+    height: 96px;
+    line-height: 96px;
+    margin-left: 10px;
+    /*margin-top: 10px;*/
+    font-size: 14px;
+}
+.videos i{
+    color: #EB7350;
+    margin-right: 5px;
+}
+.videos input {
+    position: absolute;
+    font-size: 20px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 165px;
+    height: 96px;
+}
+.videos:hover {
+    color: #999999;
+    cursor: pointer;
+}
+
+
 .upload-submit{
     text-align: center;
     margin-top: 50px;

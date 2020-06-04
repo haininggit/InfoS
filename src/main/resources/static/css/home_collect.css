@@ -1,9 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    text-decoration: none;
+}
 
+/*滚动条 start*/
+::-webkit-scrollbar {
+    width: 3px;
+    height: 4px;
+    /*background-color: #fd271d;*/
+    background-color: rgba(0, 0, 0, .1);
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    /*background-color: rgba(7, 170, 247, 0.7);*/
+    background-color: rgba(0, 0, 0, .1);
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    /*background-color: rgba(7, 170, 247, 1);*/
+    background-color: rgba(0, 0, 0, .1);
+
+}
 body>.content{
     width:100%;
     height:655px;
     /*background: green;*/
-    overflow: auto;
+    /*overflow: auto;*/
+    overflow: hidden;
     background-image: url("../images/body_bg.jpg");
     background-size: 100%;
     background-repeat:no-repeat ;
@@ -237,3 +275,18 @@ a:active{
 /*.round_icon{*/
     /*border-radius: 5px;*/
 /*}*/
+
+.backup a{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: rgba(0,0,0,.2);
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #416378;
+    font-size: 20px;
+}
