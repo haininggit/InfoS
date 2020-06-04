@@ -88,8 +88,8 @@ $(function () {
             if (radios[i].checked == true) {
                 lable = radios[i].value;
             }
-        }
-        ;
+        };
+        console.log(lable);
         // FormData上传图片
         var messageInfo = $("#messageInfo").val();
         var formFile = new FormData();
@@ -204,7 +204,7 @@ $("#article-classify").click(function () {
                     let divlable = document.createElement("li");
                     divlable.className = "box";
                     divlable.innerHTML = "<div class=\"box\">\n" +
-                        "        <input type=\"radio\"  id='" + result.data[i].lableId + "' name=\"radio\"/><label for='" + result.data[i].lableId + "'>" + result.data[i].lableInfo + "</label>\n" +
+                        "        <input type=\"radio\"  id='" + result.data[i].lableId + "' name=\"radio\" value='" + result.data[i].lableInfo + "' /><label for='" + result.data[i].lableId + "'>" + result.data[i].lableInfo + "</label>\n" +
                         "    </div>\n" +
                         "    <div class=\"line\"></div>"
                     parentlable.appendChild(divlable);
@@ -503,11 +503,11 @@ function readArticle(obj) {
 function search() {
     let parentdiv = document.getElementsByClassName("blogs")[0];
     parentdiv.innerHTML = "";
-
+    console.log("jj");
     var searchInfo = $("#search").val();
     $.ajax({
         type: "POST",
-        url: "messagesearch",//改这里
+        url: "message/search",//改这里
         data: {
             searchInfo: searchInfo,
         },
@@ -515,18 +515,20 @@ function search() {
             console.log(result.data);
             if (result.success) {
                 let parentdiv = document.getElementsByClassName("blogs")[0];
-                for (let i = 0; i < result.data.messages.length; i++) {
+                let messageinfos = result.data.messageAndAllInfos;
+                console.log(messageinfos);
+                for (let i = 0; i < messageinfos.length; i++) {
                     let article = document.createElement("li");
-                    article.id = result.data.messages[i].message.messageId;
+                    article.id = messageinfos[i].message.messageId;
                     article.innerHTML = "<div class=\"blog-wrapper\">\n" +
                         "                                <!--个人信息分为左右两部分-->\n" +
                         "                                <div class=\"blog-user-info\" >\n" +
                         "                                    <!--头像 昵称 发送时间-->\n" +
                         "                                    <div class=\"B-left\">\n" +
-                        "                                        <div class=\"left-avatar\"><img src='" + result.data.messages[i].user.userImg + "' alt = \"\" ></div>\n" +
+                        "                                        <div class=\"left-avatar\"><img src='" + messageinfos[i].user.userImg + "' alt = \"\" ></div>\n" +
                         "                                        <div class=\"name-time\">\n" +
-                        "                                            <h2 class=\"blog-nickname\">" + result.data.messages[i].user.userName + "</h2>\n" +
-                        "                                            <h3 class=\"send-time\">" + result.data.messages[i].message.messageCtime + "</h3>\n" +
+                        "                                            <h2 class=\"blog-nickname\">" + messageinfos[i].user.userName + "</h2>\n" +
+                        "                                            <h3 class=\"send-time\">" + messageinfos[i].message.messageCtime + "</h3>\n" +
                         "                                        </div>\n" +
                         "                                    </div>\n" +
                         "                                    <div class=\"B-right\">\n" +
@@ -542,7 +544,7 @@ function search() {
                         "                                </div>\n" +
                         "                                <!--动态正文-->\n" +
                         "                                <div class=\"blog-content\">\n" +
-                        "                                    <p class=\"blog-text\" onclick='readArticle(this)'>\n" + result.data.messages[i].message.messageInfo + "</p>\n" +
+                        "                                    <p class=\"blog-text\" onclick='readArticle(this)'>\n" + messageinfos[i].message.messageInfo + "</p>\n" +
                         "                                    <!-- 可能动态中只有文字 -->\n" +
                         "                                    <div class='blog-img-video' >\n" +
                         "                                    </div>\n" +
@@ -550,30 +552,31 @@ function search() {
                         "                                <!--评论 点赞等-->\n" +
                         "                                <!--评论 点赞等-->\n" +
                         "                                <div class=\"blog-views\">\n" +
-                        "                                    <span>阅读&nbsp;<span class=\"read-num\">" + result.data.messages[i].message.messageReadNum + "</span></span>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + result.data.messages[i].message.messageTranspondNum + "</a>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"comment\">评论" + result.data.messages[i].message.messageCommentNum + "</a>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='agree(this)'>点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏" + result.data.messages[i].message.messageCollectNum + "</a>\n" +
+                        "                                    <span>阅读&nbsp;<span class=\"read-num\">" + messageinfos[i].message.messageReadNum + "</span></span>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + messageinfos[i].message.messageTranspondNum + "</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"comment\">评论" + messageinfos[i].message.messageCommentNum + "</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='agree(this)'>点赞" + messageinfos[i].message.messageAgreeNum + "</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏" +messageinfos[i].message.messageCollectNum + "</a>\n" +
                         "                                </div>\n" +
                         "                            </div>";
 
                     parentdiv.appendChild(article);
-                    if (result.data.messages[i].imgs.length != 0) {
+
+                    if (messageinfos[i].imgs.length != 0) {
                         var blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
-                        for (let j = 0; j < result.data.messages[i].imgs.length; j++) {
+                        for (let j = 0; j < messageinfos[i].imgs.length; j++) {
                             let images = document.createElement("img");
-                            images.id = result.data.messages[i].imgs[j].imgId;
+                            images.id = messageinfos[i].imgs[j].imgId;
                             images.className = "artimg";
-                            images.src = result.data.messages[i].imgs[j].imgUrl
+                            images.src = messageinfos[i].imgs[j].imgUrl
                             blogimgvideos.appendChild(images);
                         }
                     }
-                    if (result.data.messages[i].video != null) {
+                    if (messageinfos[i].video != null) {
                         let blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                         let videos = document.createElement("video");
-                        videos.id = result.data.messages[i].video.videoId;
-                        videos.src = result.data.messages[i].video.videoUrl;
+                        videos.id = messageinfos[i].video.videoId;
+                        videos.src = messageinfos[i].video.videoUrl;
                         blogimgvideos.appendChild(videos);
                         videos.setAttribute("controls", "true");
                     }

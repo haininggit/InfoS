@@ -99,9 +99,10 @@
 <script>
 
     // 滑动判定
+    let flag =false;
     jigsaw.init(document.getElementById('captcha'), function () {
         flag = true;
-        document.getElementById('msg').innerHTML = '验证成功！'
+        document.getElementById('msg').innerHTML = '验证成功！';
     })
 
 
@@ -127,6 +128,7 @@
     });
 
     $("#login").click(function () {
+        if (flag){
         var userName = $("#login_username").val();
         var password = $("#login_password").val();
         $.ajax({
@@ -148,7 +150,10 @@
             error:function () {
                 console.log('出现错误');
             }
-        });
+        });}
+        else {
+            alert("验证失败，请重新验证")
+        }
     });
 
 

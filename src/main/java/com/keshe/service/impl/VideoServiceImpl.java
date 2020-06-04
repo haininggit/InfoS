@@ -36,7 +36,9 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public RetJsonData videoInfoPage(String type) {
+        System.out.println (type);
         List<Message> messages = messageMapper.messageByType(type);
+        System.out.println (messages);
         List<Map<String, Object>> list = new ArrayList<>();
         for (int i = 0; i < messages.size(); i++){
             Map<String, Object> map = new HashMap<>();

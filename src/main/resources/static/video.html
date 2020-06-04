@@ -206,18 +206,21 @@
                         $("#topic").text(videos[0].messageInfo);
 
                     } else {
-                        var div = "<div class=\"littlev\" id=\"" + videos[i].video.videoId + "\">\n" +
-                            "                <video src=\"" + videos[i].video.videoUrl + "\" width=\"208\" height=\"116\" controls type=\"video/mp4\">\n" +
-                            "                </video>\n" +
-                            "                <div class=\"p\">" + videos[i].messageInfo + "</div>\n" +
-                            "            </div>"
+                        var div_t=document.createElement("div");
+                        div_t.className="littlev";
+                        div_t.id= videos[i].video.videoId;
+                        div_t.innerHTML="<video src='"+videos[i].video.videoUrl+"' width=\"208\" height=\"116\" controls type=\"video/mp4\">\n" +
+                            "                                        </video>\n" +
+                            "                                        <div class=\"p\">"+videos[i].messageInfo+"" +
+                            "</div>"
 
                         var allvideos = document.getElementsByClassName("allVideos")[0];
 
                         if (i == 1) {
                             allvideos.innerHTML = "";
                         }
-                        allvideos.append(div);
+                        $(allvideos).append($(div_t));
+
                     }
                 }
             }
