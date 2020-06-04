@@ -1,4 +1,3 @@
-let friendId = $.cookie("friendId");
 let pagenum = 1;
 
 window.onload = function () {
@@ -6,18 +5,18 @@ window.onload = function () {
 };
 
 function page(page) {
+    let friendId= $.cookie("friendId");
     $.ajax({
         type: "POST",
         url: "user/personalInfoPage",
         data: {
-            userId: userId,
+            userId: friendId,
             pageNum: page
         },
         success: function (result) {
             console.log(result.data);
             if (result.success) {
                 document.getElementById("headp").src = result.data.user.userImg;
-                // $("#headp").attr("src",result.data.user.userImg);//这里改大头像
                 $("#nickname").text(result.data.user.userName);//这里改用户名
                 $("#we-num").text(result.data.user.userMsgcount);//这里改说说数量
                 $("#fans-num").text(result.data.user.userFans);//这里改粉丝数量
@@ -65,22 +64,23 @@ function page(page) {
                             "                                    <a href = \"javascript:;\" class=\"praise\">点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
                             "                                </div>\n" +
                             "                            </div>";
+
+                        parentdiv.appendChild(article);
                         if (result.data.messages[i].imgs.length != 0) {
-                            let blogimgvideo = $("#blog-img-video");
+                            var blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                             for (let j = 0; j < result.data.messages[i].imgs.length; j++) {
                                 let images = document.createElement("img");
                                 images.id = result.data.messages[i].imgs[j].imgUrl;
-                                blogimgvideo.appendChild(images);
+                                blogimgvideos.appendChild(images);
                             }
                         }
                         if (result.data.messages[i].video != null) {
-                            let blogimgvideo = $("#blog-img-video");
+                            var blogimgvideos = document.getElementsByClassName("blog-img-video")[i];
                             let videos = document.createElement("video");
                             videos.id = result.data.messages[i].video.videoId;
                             videos.src = result.data.messages[i].video.videoUrl;
-                            blogimgvideo.appendChild(videos);
+                            blogimgvideos.appendChild(videos);
                         }
-                        parentdiv.appendChild(article);
                     }
                 } else {
                     alert("他还没发表过任何动态");
@@ -97,26 +97,30 @@ function page(page) {
 function readArticle(obj) {
     let articleId = obj.parentNode.parentNode.parentNode.id;
     $.cookie("messageId", articleId);
-    window.location.href = "";//改这里
+    window.location.href = "particulars.html";//改这里
 }
 
 var follows=true;
 $("#modify").click(function () {
+    let userId = $.cookie("userId");
+    let friendId = $.cookie("friendId");
     if(follows) {
         follows=false;
         let lable = prompt("请输入关注好友的类型(必填)");
-        if(lable == null || lable == ""){
+        if(lable != null || lable != ""){
         $.ajax({
             type: "POST",
-            url: "relation/delRelation",
+            url: "relation/addRelation",
             data: {
                 userId: userId,
                 userById: friendId,
                 lable:lable
             },
             success: function (result) {
-                if (result.success)
-                $("#modify").text("关注")
+                if (result.success){
+                    alert(result.data);
+                    $("#modify").text("取消关注")
+                }
             }
         })
         }else {
@@ -126,14 +130,16 @@ $("#modify").click(function () {
         follows=true;
         $.ajax({
             type: "POST",
-            url: "relation/addRelation",
+            url: "relation/delRelation",
             data: {
                 userId: userId,
                 userById: friendId
             },
             success: function (result) {
-                if (result.success)
-                $("#modify").text("取消关注")
+                if (result.success){
+                    alert(result.data);
+                    $("#modify").text("取消关注")
+                }
             }
     })
     }

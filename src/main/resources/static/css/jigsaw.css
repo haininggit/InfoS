@@ -98,7 +98,8 @@
   top: 15px;
   left: 13px;
   width: 14px;
-  height: 10px;
+  height: 20px;
+ line-height: 80px;
   background: url(../images/icon_light.f13cff3.png) 0 -26px;
   background-size: 34px 471px;
 }

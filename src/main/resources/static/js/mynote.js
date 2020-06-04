@@ -7,9 +7,9 @@ window.onload = function () {
         success: function (result) {
             if (result.success) {
                 document.getElementById("headp").src = result.data.user.userImg;
-                $("#userName").val(result.data.user.userName);
-                $("#userPersonalized").val(result.data.user.userPersonalized);
-                let friendlist = $("#friendlist");
+                $("#userName").text(result.data.user.userName);
+                $("#userPersonalized").text(result.data.user.userPersonalized);
+                let friendlist = document.getElementsByClassName("friendlist")[0];
                 for (let i = 0; i < result.data.followCount; i++) {//改这里的人数
                     let friend = document.createElement("div");
                     friend.id=result.data.users[i].userId;
