@@ -67,7 +67,7 @@ public class ReplyServiceImpl implements ReplyService {
             if (reply != null){
                 String userById = reply.getReplyUserId();
                 Reply reply1 = packReply.packReply(userId, userById, parentId, replyInfo);
-                if (replyMapper.saveReply(reply) > 0){
+                if (replyMapper.saveReply(reply1) > 0){
                     Reply reply2 = replyMapper.getReply(reply1);
                     System.out.println(reply2);
                     reply2.setReplyId("reply"+reply2.getReplyId());
