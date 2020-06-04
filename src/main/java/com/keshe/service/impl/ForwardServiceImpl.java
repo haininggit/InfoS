@@ -39,7 +39,7 @@ public class ForwardServiceImpl implements ForwardService {
     @Transactional
     public RetJsonData forward(Forward forward) {
         String result = "转发失败";
-        if (this.getForwardOne(forward) == null) {
+        if (getForwardOne(forward).size()==0) {
             int flag = this.forwardMapper.forward(forward);
             flag += this.messageService.forWardUpdateTranspondnum(forward);
             RetJsonData retJsonData = userService.queryUserId(forward.getUserId());
