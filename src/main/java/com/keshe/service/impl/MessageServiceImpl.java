@@ -137,7 +137,7 @@ public class MessageServiceImpl implements MessageService {
                         }
                         return new RetJsonData(false, "视频存储失败");
                     }
-                    return new RetJsonData(true, "动态查找失败");
+                    return new RetJsonData(false, "动态查找失败");
                 }
                 return new RetJsonData(true, "发表成功", null);
             }

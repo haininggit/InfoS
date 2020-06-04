@@ -59,7 +59,7 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
-        System.out.println(messageInfo);
+//        System.out.println(messageInfo);
         if (messageInfo != null){
             return messageService.saveMessageOnImg(files, userId, messageInfo, lable);
         }
@@ -86,12 +86,9 @@ public class MessageController {
         String userId = request.getParameter("userId");
         String lable = request.getParameter("lable");
         String messageInfo = request.getParameter("messageInfo");
-        System.out.println (file);
+//        System.out.println(lable);
         if (messageInfo != null){
-            RetJsonData retJsonData = messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
-            System.out.println (retJsonData.toString ());
-//            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
-        return retJsonData;
+            return messageService.saveMessageOnVideo(file, userId, messageInfo, lable);
         }
         return new RetJsonData(false, "信息为空");
 

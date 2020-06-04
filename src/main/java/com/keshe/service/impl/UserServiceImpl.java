@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
             HttpSession session = SingleSession.getSession();
             session.setAttribute("VerifyCode", checkcode);
             session.setAttribute("Time", System.currentTimeMillis());
-            System.out.println("haha"+session.getAttribute("Time"));
+//            System.out.println("haha"+session.getAttribute("Time"));
             return new RetJsonData(true, map, null);
         }catch (Exception e){
             e.printStackTrace();

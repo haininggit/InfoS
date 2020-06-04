@@ -6,12 +6,9 @@ import com.keshe.entity.RetJsonData;
 import com.keshe.mapper.CommentMapper;
 import com.keshe.mapper.ReplyMapper;
 import com.keshe.mapper.UserMapper;
-import com.keshe.service.CommentService;
 import com.keshe.service.ReplyService;
 import com.keshe.tools.Pack;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -44,7 +41,7 @@ public class ReplyServiceImpl implements ReplyService {
         if (parentId.contains("comment")){
 //            System.out.println(parentId.length());
             String commentId = parentId.substring(7, parentId.length());
-            System.out.println(commentId);
+//            System.out.println(commentId);
             Comment comment = commentMapper.commentByCommentId(commentId);
             if (comment != null){
                 String userById = comment.getUserId();
@@ -62,21 +59,15 @@ public class ReplyServiceImpl implements ReplyService {
             return new RetJsonData(false, "评论已被删除");
         }else{
 
-            System.out.println("parentId:"+parentId);
+//            System.out.println("parentId:"+parentId);
             String replyId = parentId.substring(5, parentId.length());
-            System.out.println(replyId);
+//            System.out.println(replyId);
             Reply reply = replyMapper.replyByreplyId(replyId);
             if (reply != null){
                 String userById = reply.getReplyUserId();
                 Reply reply1 = packReply.packReply(userId, userById, parentId, replyInfo);
-
-               int save_flag= replyMapper.saveReply(reply1) ;
-                System.out.println("reply:"+reply1);
-                System.out.println("save_flag:"+save_flag);
-                if (save_flag>0){
-                    System.out.println("reply1:"+reply1);
+                if (replyMapper.saveReply(reply1) > 0){
                     Reply reply2 = replyMapper.getReply(reply1);
-                    System.out.println(reply2);
                     reply2.setReplyId("reply"+reply2.getReplyId());
                     if (reply2 != null){
                         return new RetJsonData(true, reply2, null);
