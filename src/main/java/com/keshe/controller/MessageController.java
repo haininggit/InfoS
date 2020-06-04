@@ -148,4 +148,16 @@ public class MessageController {
     }
 
 
+    /**
+     *
+     * @param searchInfo
+     * @return
+     */
+    @RequestMapping("/search")
+    @ResponseBody
+    public RetJsonData search(String searchInfo){
+        return messageService.search(searchInfo);
+    }
+
+
 }

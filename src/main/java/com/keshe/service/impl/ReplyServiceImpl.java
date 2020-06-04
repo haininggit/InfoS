@@ -40,7 +40,8 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public RetJsonData saveReply(String userId, String parentId, String replyInfo) {
         if (parentId.contains("comment")){
-            String commentId = parentId.substring(7, 8);
+            System.out.println(parentId.length());
+            String commentId = parentId.substring(7, parentId.length());
             System.out.println(commentId);
             Comment comment = commentMapper.commentByCommentId(commentId);
             if (comment != null){
@@ -58,7 +59,7 @@ public class ReplyServiceImpl implements ReplyService {
             }
             return new RetJsonData(false, "评论已被删除");
         }else{
-            String replyId = parentId.substring(6, 7);
+            String replyId = parentId.substring(5, parentId.length());
             System.out.println(replyId);
             Reply reply = replyMapper.replyByreplyId(replyId);
             if (reply != null){
