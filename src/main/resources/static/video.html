@@ -14,7 +14,8 @@
 
     </div>
     <div class="functions">
-        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt="" onclick="search()">
+        <textarea class="search" placeholder="大家正在搜:真相奶茶"></textarea><img src="images/search.png" alt=""
+                                                                          onclick="search()">
         <ul>
             <li><a href="person02.html">我要写走测试</a></li>
             <li><a href="home.html">首页</a></li>
@@ -95,6 +96,27 @@
     <div class="main">
         <p id="topic">试吃各种奇葩网红冰淇淋！居然还有臭豆腐小龙虾烤地瓜口味的！</p>
         <div class="mainVideo" id="videoId">
+<!--            <div class="userInfo"><img src="http://qb5b2c5x3.bkt.clouddn.com/Firefox_wallpaper.png" alt="" id="userImg">-->
+<!--                <div class="userSimple">-->
+<!--                    <p id="userName" style="width: auto;height: 30px;font-style: normal;color: black;size: 30px;text-align: left;margin-bottom: 4px;line-height: 30px;">zhj666</p>-->
+<!--                    <p id="userPersonalized" style="width: auto;height: 5px;font-style: normal;color: black;size: 5px;text-align: left;margin-bottom: 4px;line-height: 5px;"></p>-->
+<!--                </div>-->
+<!--                <div class="userFunc">-->
+<!--                    <ul class="selected">-->
+<!--                        <li value="1"><a href="">帮上头条</a></li>-->
+<!--                        <li value="3"><a href="">取关</a></li>-->
+<!--                        <li value="2"><a href="">关注</a></li>-->
+<!--                        <li value="4"><a href="">不在显示</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <video id="mainVideo" src="http://qb5b2c5x3.bkt.clouddn.com/176f6784-6ac6-4558-a8cc-712ccd0a5148-.mp4"-->
+<!--                   class="video" width="70%" height="60%" controls type="video/mp4"-->
+<!--                   style="display: block;margin: 0 65px;background: snow">-->
+<!--            </video>-->
+<!--            <div class="remark">-->
+
+<!--            </div>-->
 
         </div>
 
@@ -125,10 +147,10 @@
             console.log("hkjllllllllllllllllllll");
         }
         socket.onmessage = function (data) {
-            var mesnum=document.getElementById('notices').innerText;
-            mesnum=parseInt(mesnum)+1;
-            document.getElementById('notices').innerText=mesnum;
-            document.getElementById('notices').style.display='block'
+            var mesnum = document.getElementById('notices').innerText;
+            mesnum = parseInt(mesnum) + 1;
+            document.getElementById('notices').innerText = mesnum;
+            document.getElementById('notices').style.display = 'block'
             console.log("data:" + data);
             var record = JSON.parse(data.data);
 
@@ -140,27 +162,25 @@
     }
 
     function dealvideos(type) {
+            console.log(type)
+
+        console.log("...............")
         $.ajax({
             url: "video/videoInfoPage",
             data: {type: type},
-            type: "post",
+            type: "POST",
             success: function (data) {
                 var videos = data.data;
+
                 for (var i = 0; i < data.data.length; i++) {
+                    console.log(videos)
                     if (i == 0) {
-                        var mainVideo = document.getElementsByClassName("mainVideo")[0];
-                        mainVideo.innerHTML = "";
-                        var div = "  <div class=\"userInfo\">\n" +
-                            "                <img src=\"" + videos[0].user.userImg + "\" alt=\"\" id=\"userImg\">\n" +
+                        var mainVideo=document.getElementById("videoId")
+                        mainVideo.innerHTML="  <div class=\"userInfo\"><img src='"+videos[i].user.userImg+"' alt=\"\" id=\"userImg\">\n" +
                             "                <div class=\"userSimple\">\n" +
-                            "                    <p id=\"userName\"\n" +
-                            "                       style=\"width: auto;height: 30px;font-style: normal;color: black;size: 30px;text-align: left;margin-bottom: 4px;line-height: 30px;\">\n" +
-                            "                        " + videos[0].user.userName + "</p>\n" +
-                            "                    <p id=\"userPersonalized\"\n" +
-                            "                       style=\"width: auto;height: 5px;font-style: normal;color: black;size: 5px;text-align: left;margin-bottom: 4px;line-height: 5px;\">\n" +
-                            "                        " + videos[0].user.userPersonalized + "</p>\n" +
+                            "                    <p id=\"userName\" style=\"width: auto;height: 30px;font-style: normal;color: black;size: 30px;text-align: left;margin-bottom: 4px;line-height: 30px;\">"+videos[i].user.userName+"</p>\n" +
+                            "                    <p id=\"userPersonalized\" style=\"width: auto;height: 5px;font-style: normal;color: black;size: 5px;text-align: left;margin-bottom: 4px;line-height: 5px;\">"+videos[i].user.userPersonalized+"</p>\n" +
                             "                </div>\n" +
-                            "\n" +
                             "                <div class=\"userFunc\">\n" +
                             "                    <ul class=\"selected\">\n" +
                             "                        <li value=\"1\"><a href=\"\">帮上头条</a></li>\n" +
@@ -169,14 +189,17 @@
                             "                        <li value=\"4\"><a href=\"\">不在显示</a></li>\n" +
                             "                    </ul>\n" +
                             "                </div>\n" +
-                            "\n" +
                             "            </div>\n" +
-                            "            <video id=\"mainVideo\" src=\"" + videos[0].video.videoUrl + "\" class=\"video\" width=\"70%\" height=\"60%\" controls type=\"video/mp4\"\n" +
+                            "            <video id=\"mainVideo\" src=\""+videos[i].video.videoUrl+"\"\n" +
+
+                            "                   class=\"video\" width=\"70%\" height=\"60%\" controls type=\"video/mp4\"\n" +
                             "                   style=\"display: block;margin: 0 65px;background: snow\">\n" +
                             "            </video>\n" +
-                            "            <div class=\"remark\">\n" +
-                            "            </div>"
-                        mainVideo.append(div)
+                            "            <div class=\"remark\" id='"+videos[i].video.messageId+"'>\n" +
+                            "\n" +
+                            "            </div>\n"
+
+
                         $("#topic").text(videos[0].messageInfo);
 
                     } else {
@@ -187,6 +210,7 @@
                             "            </div>"
 
                         var allvideos = document.getElementsByClassName("allVideos")[0];
+
                         if (i == 1) {
                             allvideos.innerHTML = "";
                         }
@@ -198,12 +222,15 @@
     }
 
     function showThisTypeVideos(obj) {
+
         var type = obj.innerText;
+        console.log(type)
         dealvideos(type);
+
     }
 
     function search() {
-        var key=document.getElementsByClassName("search")[0].innerText;
+        var key = document.getElementsByClassName("search")[0].innerText;
 
     }
 

@@ -3,6 +3,7 @@ package com.keshe.controller;
 import com.keshe.entity.Forward;
 import com.keshe.entity.RetJsonData;
 import com.keshe.service.ForwardService;
+import com.keshe.service.impl.ForwardServiceImpl;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,7 +21,7 @@ public class ForwardController {
      * 转发
      */
     @Resource
-    private ForwardService forwardService;
+    private ForwardServiceImpl forwardService;
     @RequestMapping("/forward")
     public RetJsonData forward(String messageId,String userId){
         Forward forward=new Forward();

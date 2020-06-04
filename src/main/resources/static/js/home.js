@@ -244,10 +244,10 @@ window.onload = function () {
                         "                                <!--评论 点赞等-->\n" +
                         "                                <div class=\"blog-views\">\n" +
                         "                                    <span>阅读&nbsp;<span class=\"read-num\">" + result.data.messages[i].message.messageReadNum + "</span></span>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + result.data.messages[i].message.messageReadNum + "</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"forward\" onclick='forward(this)'>转发" + result.data.messages[i].message.messageTranspondNum+ "</a>\n" +
                         "                                    <a href = \"javascript:;\" class=\"comment\">评论" + result.data.messages[i].message.messageCommentNum + "</a>\n" +
                         "                                    <a href = \"javascript:;\" class=\"praise\" onclick='agree(this)'>点赞" + result.data.messages[i].message.messageAgreeNum + "</a>\n" +
-                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏</a>\n" +
+                        "                                    <a href = \"javascript:;\" class=\"praise\" onclick='collect(this)'>收藏" + result.data.messages[i].message.messageCollectNum + "</a>\n" +
                         "                                </div>\n" +
                         "                            </div>";
 
@@ -295,7 +295,10 @@ function collect(obj) {
         },
         success: function (result) {
                   if (result.success){
-                      alert(result.data)
+                      var text = obj.innerText;
+                      var num = 1 + parseInt(text.match(/\d+/g));
+                      obj.innerHTML = "收藏" + num;
+                      // alert(result.data)
                   }else {
                       alert(result.errorMsg)
                   }
@@ -359,6 +362,8 @@ function agree(obj) {
 function forward(obj) {
     let parentid=obj.parentNode.parentNode.parentNode.id;
     let userId = $.cookie("userId");
+    console.log(parentid);
+    console.log(userId);
     $.ajax({
         type: "POST",
         url: "forward",//改这里
@@ -367,6 +372,7 @@ function forward(obj) {
             messageId:parentid
         },
         success: function (result) {
+            console.log(result);
             if (result.success){
                 history.go(0);
                 alert(result.data)
@@ -463,3 +469,8 @@ $("#collect").click(function () {
     })
 
 })
+
+function readArticle(obj){
+    $.cookie("messageId",obj.parentNode.parentNode.parentNode.id);
+    window.location.href="particulars.html";
+}

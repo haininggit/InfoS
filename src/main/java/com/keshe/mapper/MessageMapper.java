@@ -80,7 +80,7 @@ public interface MessageMapper {
     Integer forWardUpdateTranspondnum(Forward forward);
 
 
-    @Select("select * from message where messageId=#{messageId}")
+    @Select("select * from message where message_id=#{messageId}")
     Message findMessageById(String messageId);
 
 
