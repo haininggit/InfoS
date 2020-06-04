@@ -138,8 +138,9 @@
 <script>
 
     onload = function () {
+        comId = $.cookie("userId");
         var wsUrl="ws:"+window.location.host+"//websocket/"+comId
-         comId = $.cookie("userId");
+
          socket = null;
 
         // 初始化websocket

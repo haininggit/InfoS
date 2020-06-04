@@ -33,6 +33,9 @@ onload = function () {
         var messages = document.getElementById("messages");
         messages.scrollTop = messages.scrollHeight;
     }
+
+
+
     $.ajax({
         url:"user/getUserById",
         data:{userId:comId},
