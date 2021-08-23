@@ -21,7 +21,7 @@
         <fastjson.version>1.2.46</fastjson.version>
         <mapper-starter.version>1.2.3</mapper-starter.version>
         <httpclient.version>4.5.5</httpclient.version>
-        <jsoup.version>1.11.2</jsoup.version>
+        <jsoup.version>1.14.2</jsoup.version>
     </properties>
 
     <dependencies>
